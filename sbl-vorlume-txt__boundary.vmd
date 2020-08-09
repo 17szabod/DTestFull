@@ -1,0 +1,1 @@
+set sblisexisting [info exist sblatomselect]; if {$sblisexisting} then {mol modselect 0 top $sblatomselect; unset sblatomselect} else {}

@@ -1,0 +1,52 @@
+Verbose mode automatically set to 2
+Running:  sbl-vorlume-txt.exe -f temp_spheres.txt -l --exact --boundary-viewer vmd
+
+Particle Annotator
+Statistics:
+
+Molecular Geometry Loader
+Statistics:
+Spheres 3 File Loader statistics: 
+Number of loaded data: 1
+-- Number of loaded spheres: 0
+
+Alpha Complex
+Statistics:
+Triangulation: 
+-- number of finite simplices (from vertices to tetrahedra): 0 0 0 0
+Alpha-complex: 
+-- number of finite simplices (from vertices to tetrahedra): 0 0 0 0
+-- Betti numbers (d=0, 1, 2): 0 0 0
+-- Euler characteristic: 0
+
+Report...
+
+Boundary
+Statistics:
+Number of items on the boundary: 
+-- (vertices / halfedges / faces): 0 0 0
+Number of cavities: 0
+
+Report...
+
+Surface / Volume
+Statistics:
+Surface area: 
+ -- Exterior: 0.00000
+ -- Cavities: 0.00000
+ -- Total   : 0.00000
+Volume      : 
+ -- Inside  : 0.00000
+
+Report...
+
+End Run
+
+General Statistics:
+
+Times elapsed for computations (in seconds):
+-- Alpha Complex: 0.000089
+-- Boundary: 0.000101
+-- Surface / Volume: 0.000099
+Total: 0.000289
+

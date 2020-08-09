@@ -1,0 +1,1 @@
+/usr/bin/cc  -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -g   -Xlinker -export-dynamic CMakeFiles/DTest.dir/DTest.c.o  -o DTest -Wl,-rpath,/home/daniel/anaconda3/envs/py37/lib /home/daniel/anaconda3/envs/py37/lib/libpython3.7m.so -lm -lpthread -ldl -lrt -lutil -lxml2 

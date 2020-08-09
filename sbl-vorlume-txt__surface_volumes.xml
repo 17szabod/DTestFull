@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="15">
+<total_particles>5</total_particles>
+<buried_particles>5</buried_particles>
+<exposed_particles>0</exposed_particles>
+<total_volume>0.00000000000000000e+00</total_volume>
+<total_area>0.00000000000000000e+00</total_area>
+<restrictions class_id="0" tracking_level="0" version="0">
+	<count>5</count>
+	<item_version>0</item_version>
+	<item class_id="1" tracking_level="0" version="0">
+		<particle class_id="2" tracking_level="0" version="0">
+			<x>0.00000000000000000e+00</x>
+			<y>5.40716509879127062e-317</y>
+			<z>8.39911597930119125e-323</z>
+			<weight>0.00000000000000000e+00</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>0</total_volume>
+		<total_area>0</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>0.00000000000000000e+00</x>
+			<y>5.40716509879127062e-317</y>
+			<z>8.39911597930119125e-323</z>
+			<weight>0.00000000000000000e+00</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>0</total_volume>
+		<total_area>0</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>0.00000000000000000e+00</x>
+			<y>5.40716509879127062e-317</y>
+			<z>8.39911597930119125e-323</z>
+			<weight>0.00000000000000000e+00</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>0</total_volume>
+		<total_area>0</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>0.00000000000000000e+00</x>
+			<y>5.40716509879127062e-317</y>
+			<z>8.39911597930119125e-323</z>
+			<weight>0.00000000000000000e+00</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>0</total_volume>
+		<total_area>0</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>0.00000000000000000e+00</x>
+			<y>5.40716509879127062e-317</y>
+			<z>8.39911597930119125e-323</z>
+			<weight>0.00000000000000000e+00</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>0</total_volume>
+		<total_area>0</total_area>
+	</item>
+</restrictions>
+</boost_serialization>
+
