@@ -12,7 +12,7 @@ set(PYTHON_INCLUDE_DIR /home/daniel/anaconda3/envs/py37/include/python3.7m)
 
 find_package(PythonLibs REQUIRED)
 include_directories(${PYTHON_INCLUDE_DIRS})
-include_directories(/home/daniel/PycharmProjects/ICSI/)
+include_directories(/home/daniel/Coding/DTestFull/python_support)
 #include_directories(build/lib.linux-x86_64-3.6)
 #add_library( mylib SHARED IMPORTED )
 #set_target_properties( mylib PROPERTIES IMPORTED_LOCATION build/lib.linux-x86_64-3.6/hmming.cpython-36m-x86_64-linux-gnu.so)

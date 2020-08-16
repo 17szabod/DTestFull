@@ -35,7 +35,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/daniel/anaconda3/envs/py37/include/python3.7m"/>
-					<Add directory="/home/daniel/PycharmProjects/ICSI"/>
+					<Add directory="/home/daniel/Coding/DTestFull/python_support"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -60,7 +60,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/home/daniel/anaconda3/envs/py37/include/python3.7m"/>
-					<Add directory="/home/daniel/PycharmProjects/ICSI"/>
+					<Add directory="/home/daniel/Coding/DTestFull/python_support"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>

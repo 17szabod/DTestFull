@@ -11,7 +11,7 @@ set(CMAKE_C_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "/home/daniel/anaconda3/envs/py37/include/python3.7m"
-  "/home/daniel/PycharmProjects/ICSI"
+  "python_support"
   )
 
 # Targets to which this target links.

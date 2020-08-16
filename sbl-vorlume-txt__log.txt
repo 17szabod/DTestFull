@@ -8,23 +8,23 @@ Molecular Geometry Loader
 Statistics:
 Spheres 3 File Loader statistics: 
 Number of loaded data: 1
--- Number of loaded spheres: 0
+-- Number of loaded spheres: 4416
 
 Alpha Complex
 Statistics:
 Triangulation: 
--- number of finite simplices (from vertices to tetrahedra): 0 0 0 0
+-- number of finite simplices (from vertices to tetrahedra): 4416 29699 50018 24734
 Alpha-complex: 
--- number of finite simplices (from vertices to tetrahedra): 0 0 0 0
--- Betti numbers (d=0, 1, 2): 0 0 0
--- Euler characteristic: 0
+-- number of finite simplices (from vertices to tetrahedra): 4416 28883 47930 23462
+-- Betti numbers (d=0, 1, 2): 1 0 0
+-- Euler characteristic: 1
 
 Report...
 
 Boundary
 Statistics:
 Number of items on the boundary: 
--- (vertices / halfedges / faces): 0 0 0
+-- (vertices / halfedges / faces): 2012 6036 1008
 Number of cavities: 0
 
 Report...
@@ -32,11 +32,11 @@ Report...
 Surface / Volume
 Statistics:
 Surface area: 
- -- Exterior: 0.00000
+ -- Exterior: 13.65980
  -- Cavities: 0.00000
- -- Total   : 0.00000
+ -- Total   : 13.65980
 Volume      : 
- -- Inside  : 0.00000
+ -- Inside  : 3.66944
 
 Report...
 
@@ -45,8 +45,8 @@ End Run
 General Statistics:
 
 Times elapsed for computations (in seconds):
--- Alpha Complex: 0.000089
--- Boundary: 0.000101
--- Surface / Volume: 0.000099
-Total: 0.000289
+-- Alpha Complex: 0.541496
+-- Boundary: 0.309760
+-- Surface / Volume: 4.017413
+Total: 4.868669
 

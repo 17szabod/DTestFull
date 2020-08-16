@@ -24,6 +24,16 @@
 
 #define HOSTNAME "localhost"
 
+// Local python system locations - CHANGE THESE TO INSTALL
+#define PY_LIB "/home/daniel/anaconda3/envs/py37/lib/python3.7"
+#define PY_LIB_DYNLOAD "/home/daniel/anaconda3/envs/py37/lib/python3.7/lib-dynload"
+#define PY_PACKAGES "/home/daniel/anaconda3/envs/py37/lib/python3.7/site-packages"
+#define PY_HOME_BINARIES "/home/daniel/anaconda3/envs/py37/bin/python3.7m"
+#define PY_EXECUTABLE "/home/daniel/anaconda3/envs/py37/bin/python3.7"
+// This is only necessary if your python code is in a different directory, otherwise set it to the python_support
+// directory or comment out wherever it is used
+#define PY_LOCATION "/home/daniel/Coding/DTestFull/python_support"
+
 /**
  * Enumerator for supported system types
  * (Maybe should be in DTest.h)
@@ -298,6 +308,7 @@ int runOCCConfigure(Template template, PyObject *pModule, Properties *prop, int 
         // The arguments will be: alg_tol, model
         // Convert arguments to Python types
 //        pArg1 = PyFloat_FromDouble(template.systemTolerance);
+//        printf("Alg precision: %f\n", template.algorithmPrecision);
         pArg1 = PyFloat_FromDouble(template.algorithmPrecision);
         pArg2 = PyUnicode_DecodeFSDefault(template.model);
         PyTuple_SetItem(pArgs, 0, pArg1);
@@ -310,7 +321,6 @@ int runOCCConfigure(Template template, PyObject *pModule, Properties *prop, int 
 //                PyTuple_SetItem(pArgs, 3 + 3 * i + j, pBoundArg);
 //            }
 //        }
-//        pValue = PyTuple_New(3);
         // Call the function (I believe it waits for termination without needing to call Wait(NULL)
         pValue = PyObject_CallObject(pFunc, pArgs);
         if (pValue != NULL) {
@@ -782,15 +792,15 @@ int startConfigureScript(Properties *props[2], Template template1, Template temp
         // Create the Python Connection- Janky AF
         PyObject * pName, *pModule;
         size_t stringsize;
+        char py_paths[1024];
+        snprintf(py_paths, sizeof py_paths, "%s%s%s%s%s", PY_LIB, ":", PY_LIB_DYNLOAD, ":", PY_PACKAGES);
         // Forcibly sets the path to include all Python Libraries- would need to be changed on another system
-        Py_SetPath(Py_DecodeLocale(
-                "/home/daniel/anaconda3/envs/py37/lib/python3.7:/home/daniel/anaconda3/envs/py37/lib/python3.7/lib-dynload:/home/daniel/anaconda3/envs/py37/lib/python3.7/site-packages",
-                &stringsize));
+        Py_SetPath(Py_DecodeLocale(py_paths, &stringsize));
         Py_Initialize();
         // Again, forcibly makes sure we are using the correct Python- was having issues with this,
         // and may have overdone it
-        Py_SetPythonHome(Py_DecodeLocale("/home/daniel/anaconda3/envs/py37/bin/python3.7m", &stringsize));
-        Py_SetProgramName(Py_DecodeLocale("/home/daniel/anaconda3/envs/py37/bin/python3.7", &stringsize));
+        Py_SetPythonHome(Py_DecodeLocale(PY_HOME_BINARIES, &stringsize));
+        Py_SetProgramName(Py_DecodeLocale(PY_EXECUTABLE, &stringsize));
         if (debug) {
             printf("The python home: %s\n", Py_EncodeLocale(Py_GetPythonHome(), &stringsize));
             printf("The exec prefix: %s\n", Py_EncodeLocale(Py_GetPrefix(), &stringsize));
@@ -798,9 +808,9 @@ int startConfigureScript(Properties *props[2], Template template1, Template temp
             printf("The full paths in the program: %s\n", Py_EncodeLocale(Py_GetPath(), &stringsize));
         }
         // This one is necessary; this is how it knows where your Python scripts are
-        PyRun_SimpleString("import sys\n"
-                           "sys.path.append(\"/home/daniel/PycharmProjects/ICSI\")\n"
-                           "sys.path.append(\"/home/daniel/PycharmProjects/py_oce\")\n");
+        char py_sup_call[512];
+        snprintf(py_sup_call, sizeof py_sup_call, "%s%s%s", "import sys\nsys.path.append(\"", PY_LOCATION, "\")\n");
+        PyRun_SimpleString(py_sup_call);
         // Python is loaded, begin to load the specific module
         pName = PyUnicode_DecodeFSDefault("py_interface");
         pModule = PyImport_Import(pName);
@@ -918,7 +928,7 @@ int performEvaluation(Properties p1, Properties p2, char *testName, Template tem
     char *systems[4] = {"Rhino", "OpenCasCade", "OpenSCAD", "MeshLab"};
 
     char vol_report[128]; // NOTE: Max buffer size of 64 characters here
-    if (fabs(p1.volume - p2.volume) < pow(getTolerance(), 3))
+    if (fabs(p1.volume - p2.volume) < pow(getTolerance(), 2))
         sprintf(vol_report, "Systems %s and %s have compatible volumes with a difference of %.8f\n",
                 systems[temp1.system], systems[temp2.system], p1.volume - p2.volume);
     else
@@ -926,7 +936,7 @@ int performEvaluation(Properties p1, Properties p2, char *testName, Template tem
                 systems[temp1.system], systems[temp2.system], p1.volume - p2.volume);
 
     char area_report[128];
-    if (fabs(p1.surfaceArea - p2.surfaceArea) < pow(getTolerance(), 2)) // wait for calculations
+    if (fabs(p1.surfaceArea - p2.surfaceArea) < getTolerance()) // wait for calculations
         sprintf(area_report, "Systems %s and %s have compatible areas with a difference of %.8f\n",
                 systems[temp1.system], systems[temp2.system], p1.surfaceArea - p2.surfaceArea);
     else
@@ -1015,7 +1025,7 @@ double hausdorff_distance(Properties *prop1, Properties *prop2, int debug) {
 int main(int argc, char *argv[]) {
     if (argc != 8) {
 //        printf("Usage: ./DTest <TemplateFile1> <TemplateFile2> <TestName> <Tolerance>\n");
-        printf("Usage: ./DTest <System1> <System2> <Model1> <Model2> <TestName> <Cover Parameter> <Algorithm Precision>\nFor systems, use opencascade=1\n");
+        printf("Usage: ./DTest <System1> <System2> <Model1> <Model2> <TestName> <Cover Parameter> <Algorithm Precision>\nFor systems, use opencascade=1, algorithm precision should be in mm\n");
         exit(1);
     }
     int sys1 = atoi(argv[1]);

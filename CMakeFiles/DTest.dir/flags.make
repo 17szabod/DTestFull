@@ -6,5 +6,5 @@ C_FLAGS =  -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -g   -std=gnu99
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/daniel/anaconda3/envs/py37/include/python3.7m -I/home/daniel/PycharmProjects/ICSI 
+C_INCLUDES = -I/home/daniel/anaconda3/envs/py37/include/python3.7m -I/home/daniel/Coding/DTestFull/python_support 
 

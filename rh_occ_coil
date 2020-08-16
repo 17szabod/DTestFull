@@ -1,12 +1,12 @@
-Running test rh_occ_coil on model 1 data/sphere.stp and model 2 data/sphere.stp with tolerance 0.000100:
+Running test rh_occ_coil on model 1 /home/daniel/Coding/DTestFull/data/sphere.stp and model 2 /home/daniel/Coding/DTestFull/data/sphere.stp with tolerance 0.000100:
 
 Volume:
 Systems OpenCasCade and OpenCasCade have compatible volumes with a difference of 0.00000000
-Volume of first proxy model: 0.00000000, volume of second proxy model: 0.00000000
+Volume of first proxy model: 3.66943558, volume of second proxy model: 3.66943558
 
 Surface Area:
 Systems OpenCasCade and OpenCasCade have compatible areas with a difference of 0.00000000
-Surface area of first proxy model: 0.00000000, Surface area of second proxy model: 0.00000000
+Surface area of first proxy model: 13.65979904, Surface area of second proxy model: 13.65979904
 
 Hausdorff Distance:
 Systems OpenCasCade and OpenCasCade have a compatible Hausdorff Distance of 0.00000000

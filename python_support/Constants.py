@@ -11,7 +11,7 @@ import oce
 ########################################################################################################################
 # SETTINGS:
 # Bounds may be set manually:
-SET_BOUNDS_MANUALLY = True
+SET_BOUNDS_MANUALLY = False
 if SET_BOUNDS_MANUALLY:
     # Manual default bounds:
     x_max, y_max, z_max = 8.34, 8.38, 21.34
@@ -73,7 +73,7 @@ FIND_HAUSDORFF = False
 # Cover:
 USE_INS_ONLY = True  # Only build the cover from points that returned 'in'
 # Can choose to dynamically set the radius of each ball to a constant value, or have one global constant radius
-AUTO_SET_RADIUS = True
+AUTO_SET_RADIUS = False
 CONSTANT_DEFAULT_RADIUS = .3
 
 # Feel free to ask me any questions!

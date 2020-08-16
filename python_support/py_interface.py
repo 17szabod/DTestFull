@@ -32,10 +32,8 @@ def occ_configure(alg_tol, model):
     Constants.z_max += alg_tol
     import run_pmc
     arr1, arr2, arr3, DENSITY, mins, maxs, hs, sys_e, occ = run_pmc.make_cover()
-    # print(arr1)
     rad_dict, ins, ons = run_pmc.parse_cover(arr1)
-    # print(rad_dict)
-    volume, surface_area = run_pmc.setup.volume(rad_dict)
+    volume, surface_area = pmc.volume(rad_dict)
     return float(surface_area), float(volume), rad_dict, ins
 
 
