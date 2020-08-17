@@ -12,8 +12,16 @@ External Libraries: Structural Bioinformatics Library (https://sbl.inria.fr/)
 ### To install:
 
 1. Checkout from git
-2. Create virtual Conda environment
+2. Create virtual Conda environment:
+  
+   - `conda create --name py37 python=3.7`
+   - `conda activate py37`
+  
 3. Install required packages into Conda environment
+
+   - `pip install numpy scipy sympy argparse`
+   - `conda install -c dlr-sc pythonocc-core=7.4.0`
+   
 4. Change paths in CMakeLists.txt and DTest.c to your venv's python installation
 
 
