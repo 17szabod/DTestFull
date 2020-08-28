@@ -10,29 +10,30 @@
 #include <fcntl.h>
 #include <math.h>
 #include <Python.h>
-#include <libxml/parser.h>
-#include <libxml/tree.h>
-#include <libxml/xmlIO.h>
-#include <libxml/xinclude.h>
+//#include <libxml/parser.h>
+//#include <libxml/tree.h>
+//#include <libxml/xmlIO.h>
+//#include <libxml/xinclude.h>
 // Packages for server-side
-#include <netinet/tcp.h>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <zconf.h>
+//#include <netinet/tcp.h>
+//#include <sys/socket.h>
+//#include <sys/types.h>
+#include <windef.h>
+//#include <netinet/in.h>
+//#include <netdb.h>
+//#include <zconf.h>
 
 #define HOSTNAME "localhost"
 
 // Local python system locations - CHANGE THESE TO INSTALL
-#define PY_LIB "/home/daniel/anaconda3/envs/py37/lib/python3.7"
-#define PY_LIB_DYNLOAD "/home/daniel/anaconda3/envs/py37/lib/python3.7/lib-dynload"
-#define PY_PACKAGES "/home/daniel/anaconda3/envs/py37/lib/python3.7/site-packages"
-#define PY_HOME_BINARIES "/home/daniel/anaconda3/envs/py37/bin/python3.7m"
-#define PY_EXECUTABLE "/home/daniel/anaconda3/envs/py37/bin/python3.7"
+#define PY_LIB "C:/Users/kisac/anaconda3/envs/py37/lib/python3.7"
+#define PY_LIB_DYNLOAD "C:/Users/kisac/anaconda3/envs/py37/lib/python3.7/lib-dynload"
+#define PY_PACKAGES "C:/Users/kisac/anaconda3/envs/py37/lib/python3.7/site-packages"
+#define PY_HOME_BINARIES "C:/Users/kisac/anaconda3/envs/py37/bin/python3.7m"
+#define PY_EXECUTABLE "C:/Users/kisac/anaconda3/envs/py37/bin/python3.7"
 // This is only necessary if your python code is in a different directory, otherwise set it to the python_support
 // directory or comment out wherever it is used
-#define PY_LOCATION "/home/daniel/Coding/DTestFull/python_support"
+#define PY_LOCATION "C:/Users/kisac/CLionProjects/DTestFull/python_support"
 
 /**
  * Enumerator for supported system types
@@ -73,213 +74,215 @@ void dump_properties(Properties prop) {
     printf("========END DUMP=========\n\n");
 }
 
-/**
- * Part of readXML, takes in the system version
- * @param out Template to write to
- * @param sys_root Current XML root node
- * @param doc XML document
- */
-void readSysVersion(Template *out, xmlNodePtr sys_root, xmlDocPtr doc) {
-    xmlNodePtr child_node = sys_root->children;
-    while (child_node) {
-        xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-        if (xmlStrEqual(child_node->name, (const xmlChar *) "CAD_System")) {
-            out->system = atoi((char *) content);
-        }
-        child_node = child_node->next;
-    }
-}
+//  Removing all XML compatability
+//
+///**
+// * Part of readXML, takes in the system version
+// * @param out Template to write to
+// * @param sys_root Current XML root node
+// * @param doc XML document
+// */
+//void readSysVersion(Template *out, xmlNodePtr sys_root, xmlDocPtr doc) {
+//    xmlNodePtr child_node = sys_root->children;
+//    while (child_node) {
+//        xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+//        if (xmlStrEqual(child_node->name, (const xmlChar *) "CAD_System")) {
+//            out->system = atoi((char *) content);
+//        }
+//        child_node = child_node->next;
+//    }
+//}
+//
+///**
+// * Part of readXML, takes in the bounds
+// * @param out Template to write to
+// * @param sys_root Current XML root node
+// * @param doc XML document
+// */
+//void readAABBCoords(Template *out, xmlNodePtr sys_root, xmlDocPtr doc) {
+//    xmlNodePtr child_node = sys_root->children;
+//    while (child_node) {
+//        if (xmlStrEqual(child_node->name, (const xmlChar *) "xmin")) {
+//            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+//            out->bounds[0][0] = atof((char *) content);
+//        }
+//        if (xmlStrEqual(child_node->name, (const xmlChar *) "ymin")) {
+//            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+//            out->bounds[0][1] = atof((char *) content);
+//        }
+//        if (xmlStrEqual(child_node->name, (const xmlChar *) "zmin")) {
+//            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+//            out->bounds[0][2] = atof((char *) content);
+//        }
+//        if (xmlStrEqual(child_node->name, (const xmlChar *) "xmax")) {
+//            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+//            out->bounds[1][0] = atof((char *) content);
+//        }
+//        if (xmlStrEqual(child_node->name, (const xmlChar *) "ymax")) {
+//            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+//            out->bounds[1][1] = atof((char *) content);
+//        }
+//        if (xmlStrEqual(child_node->name, (const xmlChar *) "zmax")) {
+//            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+//            out->bounds[1][2] = atof((char *) content);
+//        }
+//        child_node = child_node->next;
+//    }
+//}
+//
+///**
+// * Unused part of readXML, takes in the list of possible queries and stores them using a bitmask (untested)
+// * @param out Template to write to
+// * @param sys_root Current XML root node
+// * @param doc XML document
+// */
+//void readQueries(Template *out, xmlNodePtr sys_root, xmlDocPtr doc) {
+//    xmlNodePtr child_node = sys_root->children;
+//    long bitmask = 0;
+//    int k = 0;
+//    while (child_node) {
+//        bitmask += pow(2, k);
+//        k += 1;
+//        child_node = child_node->next;
+//    }
+//    out->queries = bitmask;
+//}
+//
+///**
+// * Part of readXML, takes in the model info
+// * @param out Template to write to
+// * @param sys_root Current XML root node
+// * @param doc XML document
+// */
+//void readModelInfo(Template *out, xmlNodePtr sys_root, xmlDocPtr doc) {
+//    xmlNodePtr child_node = sys_root->children;
+//    while (child_node) {
+//        if (xmlStrEqual(child_node->name, (const xmlChar *) "FileName")) {
+//            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+//            out->model = (char *) content;
+//        } else if (xmlStrEqual(child_node->name, (const xmlChar *) "Convexity")) {
+//            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+//            out->convex = atoi((char *) content);
+//        } else if (xmlStrEqual(child_node->name, (const xmlChar *) "Semilocal_simpleconnectivity")) {
+//            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+//            out->semilocallysimplyconnected = (int) strtol((char *) content, NULL, 0);
+//        }
+//        child_node = child_node->next;
+//    }
+//}
+//
+///**
+// * Part of readXML, takes in the tolerances
+// * @param out Template to write to
+// * @param sys_root Current XML root node
+// * @param doc XML document
+// */
+//void readTolerances(Template *out, xmlNodePtr sys_root, xmlDocPtr doc) {
+//    xmlNodePtr child_node = sys_root->children;
+//    while (child_node) {
+//        xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+//        if (xmlStrEqual(child_node->name, (const xmlChar *) "Abs_tol")) {
+//            out->systemTolerance = strtof((char *) content, NULL);
+//        }
+//        if (xmlStrEqual(child_node->name, (const xmlChar *) "alg_tol")) {
+//            out->algorithmPrecision = strtof((char *) content, NULL);
+//        }
+//        child_node = child_node->next;
+//    }
+//}
+//
+///**
+// * The main method to read the given template files
+// * @param out a reference to a template that will be populated
+// * @param cur_parent The root no to read the xml contents under
+// * @param doc The actual xml document to read from
+// */
+//void readXML(Template *out, xmlNodePtr cur_parent, xmlDocPtr doc, int debug) {
+//    xmlNodePtr cur_node = cur_parent->children;
+//    while (cur_node) {
+//        if (cur_node->type == XML_ELEMENT_NODE) {
+//            if (debug) {
+//                xmlChar *content = xmlNodeListGetString(doc, cur_node->xmlChildrenNode, 1);
+//                printf("String length: %i\n", xmlUTF8Strlen(content));
+//                printf("node type: %i, name: %s, content: %s\n", cur_node->type, cur_node->name,
+//                       xmlUTF8Strndup(content, 16));
+//            }
+//            if (xmlStrEqual(cur_node->name, (const xmlChar *) "CAD_System_and_Version")) {
+//                readSysVersion(out, cur_node, doc);
+//            } else if (xmlStrEqual(cur_node->name, (const xmlChar *) "Queries_to_use")) {
+//                readQueries(out, cur_node, doc);
+//            } else if (xmlStrEqual(cur_node->name, (const xmlChar *) "Bounding_box_coords")) {
+//                readAABBCoords(out, cur_node, doc);
+//            } else if (xmlStrEqual(cur_node->name, (const xmlChar *) "Model_Information")) {
+//                readModelInfo(out, cur_node, doc);
+//            } else if (xmlStrEqual(cur_node->name, (const xmlChar *) "Tolerances")) {
+//                readTolerances(out, cur_node, doc);
+//            }
+//        }
+//        cur_node = cur_node->next;
+//    }
+//    if (debug) {
+//        dump_template(*out);
+//    }
+//}
+//
+///**
+// * A wrapper for radXML that avoids low level xml control
+// * @param filename The name of the xml file
+// * @param testName The test name, which currently defaults to the filename
+// * @param debug A flag for whether to debug
+// * @return A populated Template struct
+// */
+//Template readTemplate(char *filename, char *testName, int debug) {
+//    xmlDocPtr doc;
+//    doc = xmlParseFile(filename);
+//    if (doc == NULL) {
+//        fprintf(stderr, "failed to parse the including file\n");
+//        exit(1);
+//    }
+//    Template out;
+//    xmlNodePtr a_node = xmlDocGetRootElement(doc);
+//    readXML(&out, a_node, doc, debug);
+//
+//    xmlFreeDoc(doc);
+//
+//    return out;
+//}
 
-/**
- * Part of readXML, takes in the bounds
- * @param out Template to write to
- * @param sys_root Current XML root node
- * @param doc XML document
- */
-void readAABBCoords(Template *out, xmlNodePtr sys_root, xmlDocPtr doc) {
-    xmlNodePtr child_node = sys_root->children;
-    while (child_node) {
-        if (xmlStrEqual(child_node->name, (const xmlChar *) "xmin")) {
-            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-            out->bounds[0][0] = atof((char *) content);
-        }
-        if (xmlStrEqual(child_node->name, (const xmlChar *) "ymin")) {
-            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-            out->bounds[0][1] = atof((char *) content);
-        }
-        if (xmlStrEqual(child_node->name, (const xmlChar *) "zmin")) {
-            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-            out->bounds[0][2] = atof((char *) content);
-        }
-        if (xmlStrEqual(child_node->name, (const xmlChar *) "xmax")) {
-            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-            out->bounds[1][0] = atof((char *) content);
-        }
-        if (xmlStrEqual(child_node->name, (const xmlChar *) "ymax")) {
-            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-            out->bounds[1][1] = atof((char *) content);
-        }
-        if (xmlStrEqual(child_node->name, (const xmlChar *) "zmax")) {
-            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-            out->bounds[1][2] = atof((char *) content);
-        }
-        child_node = child_node->next;
-    }
-}
-
-/**
- * Unused part of readXML, takes in the list of possible queries and stores them using a bitmask (untested)
- * @param out Template to write to
- * @param sys_root Current XML root node
- * @param doc XML document
- */
-void readQueries(Template *out, xmlNodePtr sys_root, xmlDocPtr doc) {
-    xmlNodePtr child_node = sys_root->children;
-    long bitmask = 0;
-    int k = 0;
-    while (child_node) {
-        bitmask += pow(2, k);
-        k += 1;
-        child_node = child_node->next;
-    }
-    out->queries = bitmask;
-}
-
-/**
- * Part of readXML, takes in the model info
- * @param out Template to write to
- * @param sys_root Current XML root node
- * @param doc XML document
- */
-void readModelInfo(Template *out, xmlNodePtr sys_root, xmlDocPtr doc) {
-    xmlNodePtr child_node = sys_root->children;
-    while (child_node) {
-        if (xmlStrEqual(child_node->name, (const xmlChar *) "FileName")) {
-            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-            out->model = (char *) content;
-        } else if (xmlStrEqual(child_node->name, (const xmlChar *) "Convexity")) {
-            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-            out->convex = atoi((char *) content);
-        } else if (xmlStrEqual(child_node->name, (const xmlChar *) "Semilocal_simpleconnectivity")) {
-            xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-            out->semilocallysimplyconnected = (int) strtol((char *) content, NULL, 0);
-        }
-        child_node = child_node->next;
-    }
-}
-
-/**
- * Part of readXML, takes in the tolerances
- * @param out Template to write to
- * @param sys_root Current XML root node
- * @param doc XML document
- */
-void readTolerances(Template *out, xmlNodePtr sys_root, xmlDocPtr doc) {
-    xmlNodePtr child_node = sys_root->children;
-    while (child_node) {
-        xmlChar *content = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-        if (xmlStrEqual(child_node->name, (const xmlChar *) "Abs_tol")) {
-            out->systemTolerance = strtof((char *) content, NULL);
-        }
-        if (xmlStrEqual(child_node->name, (const xmlChar *) "alg_tol")) {
-            out->algorithmPrecision = strtof((char *) content, NULL);
-        }
-        child_node = child_node->next;
-    }
-}
-
-/**
- * The main method to read the given template files
- * @param out a reference to a template that will be populated
- * @param cur_parent The root no to read the xml contents under
- * @param doc The actual xml document to read from
- */
-void readXML(Template *out, xmlNodePtr cur_parent, xmlDocPtr doc, int debug) {
-    xmlNodePtr cur_node = cur_parent->children;
-    while (cur_node) {
-        if (cur_node->type == XML_ELEMENT_NODE) {
-            if (debug) {
-                xmlChar *content = xmlNodeListGetString(doc, cur_node->xmlChildrenNode, 1);
-                printf("String length: %i\n", xmlUTF8Strlen(content));
-                printf("node type: %i, name: %s, content: %s\n", cur_node->type, cur_node->name,
-                       xmlUTF8Strndup(content, 16));
-            }
-            if (xmlStrEqual(cur_node->name, (const xmlChar *) "CAD_System_and_Version")) {
-                readSysVersion(out, cur_node, doc);
-            } else if (xmlStrEqual(cur_node->name, (const xmlChar *) "Queries_to_use")) {
-                readQueries(out, cur_node, doc);
-            } else if (xmlStrEqual(cur_node->name, (const xmlChar *) "Bounding_box_coords")) {
-                readAABBCoords(out, cur_node, doc);
-            } else if (xmlStrEqual(cur_node->name, (const xmlChar *) "Model_Information")) {
-                readModelInfo(out, cur_node, doc);
-            } else if (xmlStrEqual(cur_node->name, (const xmlChar *) "Tolerances")) {
-                readTolerances(out, cur_node, doc);
-            }
-        }
-        cur_node = cur_node->next;
-    }
-    if (debug) {
-        dump_template(*out);
-    }
-}
-
-/**
- * A wrapper for radXML that avoids low level xml control
- * @param filename The name of the xml file
- * @param testName The test name, which currently defaults to the filename
- * @param debug A flag for whether to debug
- * @return A populated Template struct
- */
-Template readTemplate(char *filename, char *testName, int debug) {
-    xmlDocPtr doc;
-    doc = xmlParseFile(filename);
-    if (doc == NULL) {
-        fprintf(stderr, "failed to parse the including file\n");
-        exit(1);
-    }
-    Template out;
-    xmlNodePtr a_node = xmlDocGetRootElement(doc);
-    readXML(&out, a_node, doc, debug);
-
-    xmlFreeDoc(doc);
-
-    return out;
-}
-
-/**
- * A currently unused method to perform network queries
- * @param host
- * @param port
- * @return
- */
-// source: https://gist.github.com/nolim1t/126991
-int socket_connect(char *host, in_port_t port) {
-    struct hostent *hp;
-    struct sockaddr_in addr;
-    int on = 1, sock;
-
-    if ((hp = gethostbyname(host)) == NULL) {
-        herror("gethostbyname");
-        exit(1);
-    }
-    bcopy(hp->h_addr, &addr.sin_addr, hp->h_length);
-    addr.sin_port = htons(port);
-    addr.sin_family = AF_INET;
-    sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
-    setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, (const char *) &on, sizeof(int));
-
-    if (sock == -1) {
-        perror("setsockopt");
-        exit(1);
-    }
-
-    if (connect(sock, (struct sockaddr *) &addr, sizeof(struct sockaddr_in)) == -1) {
-        perror("connect");
-        exit(1);
-
-    }
-    return sock;
-}
+///**
+// * A currently unused method to perform network queries
+// * @param host
+// * @param port
+// * @return
+// */
+//// source: https://gist.github.com/nolim1t/126991
+//int socket_connect(char *host, in_port_t port) {
+//    struct hostent *hp;
+//    struct sockaddr_in addr;
+//    int on = 1, sock;
+//
+//    if ((hp = gethostbyname(host)) == NULL) {
+//        herror("gethostbyname");
+//        exit(1);
+//    }
+//    bcopy(hp->h_addr, &addr.sin_addr, hp->h_length);
+//    addr.sin_port = htons(port);
+//    addr.sin_family = AF_INET;
+//    sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+//    setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, (const char *) &on, sizeof(int));
+//
+//    if (sock == -1) {
+//        perror("setsockopt");
+//        exit(1);
+//    }
+//
+//    if (connect(sock, (struct sockaddr *) &addr, sizeof(struct sockaddr_in)) == -1) {
+//        perror("connect");
+//        exit(1);
+//
+//    }
+//    return sock;
+//}
 
 /**
  * The main call to compute the properties of a template that is an OCC system
@@ -871,7 +874,7 @@ int startConfigureScript(Properties *props[2], Template template1, Template temp
         }
         // If we ever figure out the Rino compute server, changes would come here, as we wouldn't need Python
     } else if (template1.system == Rhino) {
-        socket_connect(HOSTNAME, 80); // Might need to change ports
+        //socket_connect(HOSTNAME, 80); // Might need to change ports
     } else if (template1.system == OpenSCAD || template2.system == OpenSCAD) {
 
     } else {

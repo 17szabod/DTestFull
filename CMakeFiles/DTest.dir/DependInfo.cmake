@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/daniel/Coding/DTestFull/DTest.c" "/home/daniel/Coding/DTestFull/CMakeFiles/DTest.dir/DTest.c.o"
+  "C:/Users/kisac/CLionProjects/DTestFull/DTest.c" "C:/Users/kisac/CLionProjects/DTestFull/CMakeFiles/DTest.dir/DTest.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/home/daniel/anaconda3/envs/py37/include/python3.7m"
+  "C:/Users/kisac/anaconda3/envs/py37/include"
   "python_support"
   )
 

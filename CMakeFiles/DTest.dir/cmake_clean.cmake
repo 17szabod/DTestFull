@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/DTest.dir/DTest.c.o"
-  "DTest"
+  "CMakeFiles/DTest.dir/DTest.c.obj"
+  "DTest.exe"
+  "DTest.exe.manifest"
   "DTest.pdb"
+  "libDTest.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
