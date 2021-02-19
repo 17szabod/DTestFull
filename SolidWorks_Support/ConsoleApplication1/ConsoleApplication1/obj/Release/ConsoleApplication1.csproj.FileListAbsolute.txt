@@ -1,0 +1,15 @@
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Release\ConsoleApplication1.exe.config
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\Interop.CAMWORKSLib.dll
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\Interop.DesignCheckerLib.dll
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\Interop.SolidWorks.dll
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\Interop.SwCommands.dll
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\Interop.SwConst.dll
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\Interop.SwDimXpert.dll
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\Interop.SwMotionStudy.dll
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\Interop.SWPublished.dll
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\Interop.SWRoutingLib.dll
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\ConsoleApplication1.csproj.ResolveComReference.cache
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Release\ConsoleApplication1.exe
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Release\ConsoleApplication1.pdb
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\ConsoleApplication1.exe
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Release\ConsoleApplication1.pdb

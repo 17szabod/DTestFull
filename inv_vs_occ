@@ -1,0 +1,12 @@
+Running test inv_vs_occ on model 1 data/black_arrow_nose.step and model 2 C:\\Users\\kisac\\Downloads\\noseblack_arrow_nose2.ipt with tolerance 0.000010:
+
+Volume:
+Systems OpenCasCade and H‹ØH…ÀuHè•÷ÿÿH‹ÃHƒÄ [ÃÌÌÌÌÌÌÌÌH‰\$WHƒì ÿ,Ä have incompatible volumes with a difference of 19872.21Systems OpenCasCade and H‹ØH…ÀuHè•÷ÿÿH‹ÃHƒÄ [ÃÌÌÌÌÌÌÌÌH‰\$WHƒì ÿ,Ä have incompatible areas with a difference of 2298.54410Systems OpenCasCade and H‹ØH…ÀuHè•÷ÿÿH‹ÃHƒÄ [ÃÌÌÌÌÌÌÌÌH‰\$WHƒì ÿ,Ä have an incompatible Hausdorff Distance of 23.45781632
+Volume of first proxy model: 68823.64589809, volume of second proxy model: 48951.43004156
+
+Surface Area:
+Systems OpenCasCade and H‹ØH…ÀuHè•÷ÿÿH‹ÃHƒÄ [ÃÌÌÌÌÌÌÌÌH‰\$WHƒì ÿ,Ä have incompatible areas with a difference of 2298.54410Systems OpenCasCade and H‹ØH…ÀuHè•÷ÿÿH‹ÃHƒÄ [ÃÌÌÌÌÌÌÌÌH‰\$WHƒì ÿ,Ä have an incompatible Hausdorff Distance of 23.45781632
+Surface area of first proxy model: 11113.43647874, Surface area of second proxy model: 8814.89237490
+
+Hausdorff Distance:
+Systems OpenCasCade and H‹ØH…ÀuHè•÷ÿÿH‹ÃHƒÄ [ÃÌÌÌÌÌÌÌÌH‰\$WHƒì ÿ,Ä have an incompatible Hausdorff Distance of 23.45781632

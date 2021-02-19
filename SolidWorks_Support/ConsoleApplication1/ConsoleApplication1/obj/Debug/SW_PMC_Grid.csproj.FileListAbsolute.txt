@@ -1,0 +1,16 @@
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\SW_PMC_Grid.exe.config
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\SW_PMC_Grid.exe
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\SW_PMC_Grid.pdb
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\SW_PMC_Grid.csprojResolveAssemblyReference.cache
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.CAMWORKSLib.dll
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.DesignCheckerLib.dll
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SolidWorks.dll
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SwCommands.dll
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SwConst.dll
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SwDimXpert.dll
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SwMotionStudy.dll
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SWPublished.dll
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SWRoutingLib.dll
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\SW_PMC_Grid.csproj.ResolveComReference.cache
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\SW_PMC_Grid.exe
+C:\Users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\SW_PMC_Grid.pdb

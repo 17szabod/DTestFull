@@ -1,0 +1,12 @@
+Running test inv_vs_sw on model 1 C:\\Users\\kisac\\Downloads\\black_arrow_nose.sldprt and model 2 C:\\Users\\kisac\\Downloads\\noseblack_arrow_nose2.ipt with tolerance 6.000000:
+
+Volume:
+Systems SolidWorks and Inventor have compatible volumes with a difference of 144.06075049
+Volume of first proxy model: 47454.67126671, volume of second proxy model: 47310.61051623
+
+Surface Area:
+Systems SolidWorks and Inventor have compatible areas with a difference of 23.33387467
+Surface area of first proxy model: 8271.65655314, Surface area of second proxy model: 8248.32267847
+
+Hausdorff Distance:
+Systems SolidWorks and Inventor have a compatible Hausdorff Distance of 0.06466714

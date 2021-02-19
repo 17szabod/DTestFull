@@ -2,3 +2,8 @@
 /build
 /cmake-build-debug
 /CMakeFiles
+*.[oa]
+*~
+**/.pdb
+**/.cache
+**/.vs/**

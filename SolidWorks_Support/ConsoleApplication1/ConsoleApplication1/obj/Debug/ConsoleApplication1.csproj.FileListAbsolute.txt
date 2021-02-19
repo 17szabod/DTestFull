@@ -1,0 +1,17 @@
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.CAMWORKSLib.dll
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.DesignCheckerLib.dll
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SolidWorks.dll
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SwCommands.dll
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SwConst.dll
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SwDimXpert.dll
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SwMotionStudy.dll
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SWPublished.dll
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SWRoutingLib.dll
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.ResolveComReference.cache
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+c:\users\kisac\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\kisac\Documents\Visual Studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\SW_PMC_Grid.exe.config

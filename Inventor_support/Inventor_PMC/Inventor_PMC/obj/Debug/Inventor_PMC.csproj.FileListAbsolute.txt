@@ -1,0 +1,9 @@
+c:\users\kisac\documents\visual studio 2015\Projects\Inventor_PMC\Inventor_PMC\bin\Debug\Inventor_PMC.exe.config
+c:\users\kisac\documents\visual studio 2015\Projects\Inventor_PMC\Inventor_PMC\bin\Debug\Inventor_PMC.exe
+c:\users\kisac\documents\visual studio 2015\Projects\Inventor_PMC\Inventor_PMC\bin\Debug\Inventor_PMC.pdb
+c:\users\kisac\documents\visual studio 2015\Projects\Inventor_PMC\Inventor_PMC\obj\Debug\Inventor_PMC.csprojResolveAssemblyReference.cache
+c:\users\kisac\documents\visual studio 2015\Projects\Inventor_PMC\Inventor_PMC\obj\Debug\Inventor_PMC.exe
+c:\users\kisac\documents\visual studio 2015\Projects\Inventor_PMC\Inventor_PMC\obj\Debug\Inventor_PMC.pdb
+C:\Users\kisac\CLionProjects\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\bin\Debug\Inventor_PMC.exe.config
+C:\Users\kisac\CLionProjects\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\obj\Debug\Inventor_PMC.exe
+C:\Users\kisac\CLionProjects\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\obj\Debug\Inventor_PMC.pdb
