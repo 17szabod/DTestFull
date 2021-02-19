@@ -26,11 +26,11 @@
 #define HOSTNAME "localhost"
 
 // Local python system locations - CHANGE THESE TO INSTALL
-#define PY_LIB "C:/Users/kisac/anaconda3/envs/py37/lib/python3.7"
-#define PY_LIB_DYNLOAD "C:/Users/kisac/anaconda3/envs/py37/lib/python3.7/lib-dynload"
-#define PY_PACKAGES "C:/Users/kisac/anaconda3/envs/py37/lib/python3.7/site-packages"
-#define PY_HOME_BINARIES "C:/Users/kisac/anaconda3/envs/py37/bin/python3.7m"
-#define PY_EXECUTABLE "C:/Users/kisac/anaconda3/envs/py37/bin/python3.7"
+#define PY_LIB "C:/Users/kisac/anaconda3/envs/py37/Lib"
+//#define PY_LIB_DYNLOAD "C:/Users/kisac/anaconda3/envs/py37/lib/python3.7/lib-dynload"
+#define PY_PACKAGES "C:/Users/kisac/anaconda3/envs/py37/Lib/site-packages"
+#define PY_HOME_BINARIES "C:/Users/kisac/anaconda3/envs/py37/Library"
+#define PY_EXECUTABLE "C:/Users/kisac/anaconda3/envs/py37/python"
 // This is only necessary if your python code is in a different directory, otherwise set it to the python_support
 // directory or comment out wherever it is used
 #define PY_LOCATION "C:/Users/kisac/CLionProjects/DTestFull/python_support"
@@ -40,7 +40,7 @@
  * (Maybe should be in DTest.h)
  */
 enum systemTypes {
-    Rhino = 0, OpenCasCade = 1, OpenSCAD = 2, MeshLab = 3
+    Rhino = 0, OpenCasCade = 1, OpenSCAD = 2, MeshLab = 3, SolidWorks = 4, Inventor = 5
 };
 
 /**
@@ -306,6 +306,262 @@ int runOCCConfigure(Template template, PyObject *pModule, Properties *prop, int 
         }
         if (debug) {
             printf("Calling a new round of occ configure\n");
+        }
+        pArgs = PyTuple_New(2);
+        // The arguments will be: alg_tol, model
+        // Convert arguments to Python types
+//        pArg1 = PyFloat_FromDouble(template.systemTolerance);
+//        printf("Alg precision: %f\n", template.algorithmPrecision);
+        pArg1 = PyFloat_FromDouble(template.algorithmPrecision);
+        pArg2 = PyUnicode_DecodeFSDefault(template.model);
+        PyTuple_SetItem(pArgs, 0, pArg1);
+        PyTuple_SetItem(pArgs, 1, pArg2);
+        // No longer need to set bounding box from
+//        PyTuple_SetItem(pArgs, 2, pArg3);
+//        for (int i = 0; i < 2; i++) {
+//            for (int j = 0; j < 3; j++) {
+//                pBoundArg = PyFloat_FromDouble(template.bounds[i][j]);
+//                PyTuple_SetItem(pArgs, 3 + 3 * i + j, pBoundArg);
+//            }
+//        }
+        // Call the function (I believe it waits for termination without needing to call Wait(NULL)
+        pValue = PyObject_CallObject(pFunc, pArgs);
+        if (pValue != NULL) {
+            PyObject * pSurfAr, *pVol, *pProx;
+            PyObject * pSize;
+            if (!PyTuple_CheckExact(pValue)) {
+                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
+                exit(1);
+            }
+            if (debug) {
+                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
+            }
+            // Get arguments back and make them usable
+            pSurfAr = PyTuple_GetItem(pValue, 0);
+            pVol = PyTuple_GetItem(pValue, 1);
+            pProx = PyTuple_GetItem(pValue, 2);
+            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
+            if (debug) {
+                printf("Surface Area: %f\n", prop->surfaceArea);
+            }
+            prop->volume = PyFloat_AsDouble(pVol);
+            // The point array might be large, so we need to do some extra work
+            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
+            unsigned long size = PyLong_AsUnsignedLong(pSize);
+            prop->proxyModel = malloc(size * sizeof(double *));
+            for (int i = 0; i < size; i++) {
+                prop->proxyModel[i] = malloc(4 * sizeof(double)); // Each entry is [x,y,z,rad]
+            }
+            if (debug) {
+                printf("Successfully allocated space for proxy model\n");
+            }
+            PyObject * key, *value;
+            PyObject * xVal, *yVal, *zVal;
+            double x, y, z;
+            int i = 0;
+            Py_ssize_t
+            pos = 0;
+            if (debug) {
+                printf("Starting to loop through each element in dictionary\n");
+                printf("The size of the dictionary is: %lo\n", size);
+            }
+            prop->num_points = size;
+            // Retrieves all the points
+            while (PyDict_Next(pProx, &pos, &key, &value)) {
+                xVal = PyTuple_GetItem(key, 0);
+                yVal = PyTuple_GetItem(key, 1);
+                zVal = PyTuple_GetItem(key, 2);
+                x = PyFloat_AsDouble(xVal);
+                y = PyFloat_AsDouble(yVal);
+                z = PyFloat_AsDouble(zVal);
+                if (debug) {
+                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
+                }
+                if (x == -1 && PyErr_Occurred()) {
+                    PyErr_Print();
+                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
+                    exit(1);
+                }
+                prop->proxyModel[i][0] = x;
+                prop->proxyModel[i][1] = y;
+                prop->proxyModel[i][2] = z;
+                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
+                i++;
+            }
+            if (debug) {
+                printf("Successfully read the proxy model\n");
+                printf("Successfully set the proxy model\n");
+            }
+            if (debug) {
+                printf("Successfully populated new properties structure!\n");
+                dump_properties(*prop);
+            }
+        } else {
+            Py_DECREF(pFunc);
+            Py_DECREF(pModule);
+            PyErr_Print();
+            fprintf(stderr, "Call failed\n");
+            exit(1);
+        }
+    } else {
+        if (PyErr_Occurred())
+            PyErr_Print();
+        fprintf(stderr, "Cannot find function \"%s\"\n", "occ_configure");
+    }
+    Py_DECREF(pFunc);
+    return 0;
+}
+
+/**
+ * The main call to compute the properties of a template that is a SolidWorks system
+ * @param template The given template containing settings etc
+ * @param pModule The Python module to connect to
+ * @param prop The Properties struct to populate
+ * @param debug A flag for debug mode
+ * @return 0 for success, 1 for failure
+ */
+int runSWConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
+    PyObject * pFunc;
+    pFunc = PyObject_GetAttrString(pModule, "sw_configure");
+    /* pFunc is a new reference */
+
+    if (pFunc && PyCallable_Check(pFunc)) {
+
+        PyObject * pArgs, *pValue, *pArg1, *pArg2;
+        if (template.system != SolidWorks) {
+            fprintf(stderr, "Tried to run OCC configure on system %i, which is not OCC.\n", template.system);
+            exit(1);
+        }
+        if (debug) {
+            printf("Calling a new round of solidworks configure\n");
+        }
+        pArgs = PyTuple_New(2);
+        // The arguments will be: alg_tol, model
+        // Convert arguments to Python types
+//        pArg1 = PyFloat_FromDouble(template.systemTolerance);
+//        printf("Alg precision: %f\n", template.algorithmPrecision);
+        pArg1 = PyFloat_FromDouble(template.algorithmPrecision);
+        pArg2 = PyUnicode_DecodeFSDefault(template.model);
+        PyTuple_SetItem(pArgs, 0, pArg1);
+        PyTuple_SetItem(pArgs, 1, pArg2);
+        // No longer need to set bounding box from
+//        PyTuple_SetItem(pArgs, 2, pArg3);
+//        for (int i = 0; i < 2; i++) {
+//            for (int j = 0; j < 3; j++) {
+//                pBoundArg = PyFloat_FromDouble(template.bounds[i][j]);
+//                PyTuple_SetItem(pArgs, 3 + 3 * i + j, pBoundArg);
+//            }
+//        }
+        // Call the function (I believe it waits for termination without needing to call Wait(NULL)
+        pValue = PyObject_CallObject(pFunc, pArgs);
+        if (pValue != NULL) {
+            PyObject * pSurfAr, *pVol, *pProx;
+            PyObject * pSize;
+            if (!PyTuple_CheckExact(pValue)) {
+                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
+                exit(1);
+            }
+            if (debug) {
+                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
+            }
+            // Get arguments back and make them usable
+            pSurfAr = PyTuple_GetItem(pValue, 0);
+            pVol = PyTuple_GetItem(pValue, 1);
+            pProx = PyTuple_GetItem(pValue, 2);
+            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
+            if (debug) {
+                printf("Surface Area: %f\n", prop->surfaceArea);
+            }
+            prop->volume = PyFloat_AsDouble(pVol);
+            // The point array might be large, so we need to do some extra work
+            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
+            unsigned long size = PyLong_AsUnsignedLong(pSize);
+            prop->proxyModel = malloc(size * sizeof(double *));
+            for (int i = 0; i < size; i++) {
+                prop->proxyModel[i] = malloc(4 * sizeof(double)); // Each entry is [x,y,z,rad]
+            }
+            if (debug) {
+                printf("Successfully allocated space for proxy model\n");
+            }
+            PyObject * key, *value;
+            PyObject * xVal, *yVal, *zVal;
+            double x, y, z;
+            int i = 0;
+            Py_ssize_t
+            pos = 0;
+            if (debug) {
+                printf("Starting to loop through each element in dictionary\n");
+                printf("The size of the dictionary is: %lo\n", size);
+            }
+            prop->num_points = size;
+            // Retrieves all the points
+            while (PyDict_Next(pProx, &pos, &key, &value)) {
+                xVal = PyTuple_GetItem(key, 0);
+                yVal = PyTuple_GetItem(key, 1);
+                zVal = PyTuple_GetItem(key, 2);
+                x = PyFloat_AsDouble(xVal);
+                y = PyFloat_AsDouble(yVal);
+                z = PyFloat_AsDouble(zVal);
+                if (debug) {
+                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
+                }
+                if (x == -1 && PyErr_Occurred()) {
+                    PyErr_Print();
+                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
+                    exit(1);
+                }
+                prop->proxyModel[i][0] = x;
+                prop->proxyModel[i][1] = y;
+                prop->proxyModel[i][2] = z;
+                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
+                i++;
+            }
+            if (debug) {
+                printf("Successfully read the proxy model\n");
+                printf("Successfully set the proxy model\n");
+            }
+            if (debug) {
+                printf("Successfully populated new properties structure!\n");
+                dump_properties(*prop);
+            }
+        } else {
+            Py_DECREF(pFunc);
+            Py_DECREF(pModule);
+            PyErr_Print();
+            fprintf(stderr, "Call failed\n");
+            exit(1);
+        }
+    } else {
+        if (PyErr_Occurred())
+            PyErr_Print();
+        fprintf(stderr, "Cannot find function \"%s\"\n", "occ_configure");
+    }
+    Py_DECREF(pFunc);
+    return 0;
+}
+
+/**
+ * The main call to compute the properties of a template that is a SolidWorks system
+ * @param template The given template containing settings etc
+ * @param pModule The Python module to connect to
+ * @param prop The Properties struct to populate
+ * @param debug A flag for debug mode
+ * @return 0 for success, 1 for failure
+ */
+int runInvConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
+    PyObject * pFunc;
+    pFunc = PyObject_GetAttrString(pModule, "inv_configure");
+    /* pFunc is a new reference */
+
+    if (pFunc && PyCallable_Check(pFunc)) {
+
+        PyObject * pArgs, *pValue, *pArg1, *pArg2;
+        if (template.system != Inventor) {
+            fprintf(stderr, "Tried to run Inventor configure on system %i, which is not Inventor.\n", template.system);
+            exit(1);
+        }
+        if (debug) {
+            printf("Calling a new round of Inventor configure\n");
         }
         pArgs = PyTuple_New(2);
         // The arguments will be: alg_tol, model
@@ -791,12 +1047,13 @@ int startConfigureScript(Properties *props[2], Template template1, Template temp
     Properties *prop1 = props[0];
     Properties *prop2 = props[1];
     if (template1.system == OpenCasCade || template2.system == OpenCasCade || template1.system == OpenSCAD ||
-        template2.system == OpenSCAD || template1.system == Rhino || template2.system == Rhino) {
+        template2.system == OpenSCAD || template1.system == Rhino || template2.system == Rhino || template1.system == SolidWorks || template2.system == SolidWorks) {
         // Create the Python Connection- Janky AF
         PyObject * pName, *pModule;
         size_t stringsize;
-        char py_paths[1024];
-        snprintf(py_paths, sizeof py_paths, "%s%s%s%s%s", PY_LIB, ":", PY_LIB_DYNLOAD, ":", PY_PACKAGES);
+        char py_paths[2048];
+        snprintf(py_paths, sizeof py_paths, "%s%s%s%s%s%s%s%s%s%s%s", PY_LIB, ";", PY_PACKAGES, ";", "C:\\Users\\kisac\\anaconda3\\envs\\py37\\Library\\bin",
+                 ";", "C:/Users/kisac/anaconda3/envs/py37", ";", "C:/Users/kisac/anaconda3/envs/py37/DLLs", ";", "C:/Users/kisac/anaconda3/envs/py37/site-packages/OCC/Core");
         // Forcibly sets the path to include all Python Libraries- would need to be changed on another system
         Py_SetPath(Py_DecodeLocale(py_paths, &stringsize));
         Py_Initialize();
@@ -839,6 +1096,26 @@ int startConfigureScript(Properties *props[2], Template template1, Template temp
             if (template2.system == OpenCasCade) {
                 if (runOCCConfigure(template2, pModule, prop2, debug) != 0) {
                     fprintf(stderr, "Failed to run OCC configure for %s\n", template2.model);
+                }
+            }
+            if (template1.system == SolidWorks) {
+                if (runSWConfigure(template1, pModule, prop1, debug) != 0) {
+                    fprintf(stderr, "Failed to run SolidWorks configure for %s\n", template1.model);
+                }
+            }
+            if (template2.system == SolidWorks) {
+                if (runSWConfigure(template2, pModule, prop2, debug) != 0) {
+                    fprintf(stderr, "Failed to run SolidWorks configure for %s\n", template1.model);
+                }
+            }
+            if (template1.system == Inventor) {
+                if (runInvConfigure(template1, pModule, prop1, debug) != 0) {
+                    fprintf(stderr, "Failed to run Inventor configure for %s\n", template1.model);
+                }
+            }
+            if (template2.system == Inventor) {
+                if (runInvConfigure(template2, pModule, prop2, debug) != 0) {
+                    fprintf(stderr, "Failed to run Inventor configure for %s\n", template1.model);
                 }
             }
             if (template1.system == Rhino) {
@@ -928,10 +1205,10 @@ int performEvaluation(Properties p1, Properties p2, char *testName, Template tem
         exit(1);
     }
     fprintf(fp, "Running test %s on model 1 %s and model 2 %s with tolerance %5f:\n\n", testName, temp1.templateName, temp2.templateName, getTolerance());
-    char *systems[4] = {"Rhino", "OpenCasCade", "OpenSCAD", "MeshLab"};
+    char *systems[6] = {"Rhino", "OpenCasCade", "OpenSCAD", "MeshLab", "SolidWorks", "Inventor"};
 
     char vol_report[128]; // NOTE: Max buffer size of 64 characters here
-    if (fabs(p1.volume - p2.volume) < pow(getTolerance(), 2))
+    if (fabs(p1.volume - p2.volume) < pow(getTolerance(), 3))
         sprintf(vol_report, "Systems %s and %s have compatible volumes with a difference of %.8f\n",
                 systems[temp1.system], systems[temp2.system], p1.volume - p2.volume);
     else
@@ -939,7 +1216,7 @@ int performEvaluation(Properties p1, Properties p2, char *testName, Template tem
                 systems[temp1.system], systems[temp2.system], p1.volume - p2.volume);
 
     char area_report[128];
-    if (fabs(p1.surfaceArea - p2.surfaceArea) < getTolerance()) // wait for calculations
+    if (fabs(p1.surfaceArea - p2.surfaceArea) < pow(getTolerance(), 2)) // wait for calculations
         sprintf(area_report, "Systems %s and %s have compatible areas with a difference of %.8f\n",
                 systems[temp1.system], systems[temp2.system], p1.surfaceArea - p2.surfaceArea);
     else

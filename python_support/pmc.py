@@ -33,12 +33,43 @@ def volume(rad_dict):
     with open(out_name + '.txt', 'w') as outfile:
         for key, value in rad_dict.items():
             outfile.writelines(['{0} {1} {2} {3}\n'.format(*key, value)])
-    os.system('sbl-vorlume-txt.exe -f {0} -l --exact --boundary-viewer vmd'.format(out_name + '.txt'))  # modify this if necessary to add
+    ##################################################
+    # This is an attempt to use a remote installation of sbl
+    import paramiko
+    from scp import SCPClient
+    # Declare credentials
+    # TODO: Don't hard code my password! Duygu if you see this just pretend you didn't :)
+    host = '10.140.73.88'  # dynamic
+    username = 'daniel'
+    password = 'almabolt3'
+
+    # 1. Connect
+    con = paramiko.SSHClient()
+    con.load_system_host_keys()
+    con.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    con.connect(host, username=username, password=password)
+
+    # 2. Send our file over via scp
+    with SCPClient(con.get_transport()) as scp:
+        scp.put(out_name + '.txt', '~/tmp_share')
+
+    # 3. Run our commands
+    stdin, stdout, stderr = con.exec_command('cd ~/tmp_share; /usr/local/bin/sbl-vorlume-txt.exe -f {0} -l --exact --boundary-viewer vmd'.format(out_name + '.txt'))
+    exit_status = stdout.channel.recv_exit_status()          # Blocking call
+    if exit_status != 0:
+        print("Failed to calculate volume with exit status " + str(exit_status))
+    # 4. Get our file back
+    log_file_name = '~/tmp_share/sbl-vorlume-txt__surface_volumes.xml'
+    with SCPClient(con.get_transport()) as scp:
+        scp.get(log_file_name)
+    ##################################################
+    # os.system('sbl-vorlume-txt.exe -f {0} -l --exact --boundary-viewer vmd'.format(out_name + '.txt'))  # modify this if necessary to add
     # extra arguments/ call the executable from a different location
     log_file_name = 'sbl-vorlume-txt__surface_volumes.xml'
     tree = ET.parse(log_file_name)
     volume = tree.getroot()[3].text
     area = tree.getroot()[4].text
+    print("Returning! Volume: {0}, Area: {1}".format(volume, area))
     return volume, area
 
 
@@ -106,7 +137,7 @@ def OCC_setup(name):
         reader.TransferRoots()
         reader.PrintTransferInfo(False, 1)
     else:
-        print('Error: file format of {0} not recognized, exiting'.format(args.occ.name))
+        print('Error: file format of {0} not recognized, exiting'.format(name))
         exit()
     if status == IFSelect.IFSelect_RetDone:  # check status
         failsonly = True

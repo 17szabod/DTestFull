@@ -1,5 +1,6 @@
 # import mfs
 import pmc
+import os
 # import meshlab
 
 
@@ -18,6 +19,7 @@ def occ_configure(alg_tol, model):
     Constants.DENSITY = Constants.DENSITY_VALUE
     Constants.SET_BOUNDS_MANUALLY = False
     Constants.x_min, Constants.y_min, Constants.z_min, Constants.x_max, Constants.y_max, Constants.z_max = pmc.oce.aabb(Constants.OCC_SHAPE)
+    print("Bounding box: {0}".format(pmc.oce.aabb(Constants.OCC_SHAPE)))
     # Constants.x_min = xmin
     # Constants.y_min = ymin
     # Constants.z_min = zmin
@@ -34,10 +36,35 @@ def occ_configure(alg_tol, model):
     arr1, arr2, arr3, DENSITY, mins, maxs, hs, sys_e, occ = run_pmc.make_cover()
     rad_dict, ins, ons = run_pmc.parse_cover(arr1)
     volume, surface_area = pmc.volume(rad_dict)
+    # print(rad_dict)
     return float(surface_area), float(volume), rad_dict, ins
 
 
 def rhino_configure(sys_tol, alg_tol, point_file):
+    rad_dict, ins, ons = read_shared_cover(point_file, alg_tol)
+    import run_pmc
+    # print(rad_dict)
+    volume, surface_area = run_pmc.setup.volume(rad_dict)
+    return float(surface_area), float(volume), rad_dict, ins
+
+
+def sw_configure(alg_tol, model):
+    import Constants
+    print("Beginning SolidWorks configure.")
+    os.system('\"C:\\Users\\kisac\\Documents\\visual studio 2015\\Projects\\ConsoleApplication1\\ConsoleApplication1\\bin\\Debug\\SW_PMC_Grid.exe\" {0} {1} {2}'.format(model, Constants.DENSITY, alg_tol if alg_tol != -1 else ""))
+    point_file = "C:\\Users\\kisac\\CLionProjects\\DTestFull\\temp_SW_spheres.txt"
+    rad_dict, ins, ons = read_shared_cover(point_file, alg_tol)
+    import run_pmc
+    # print(rad_dict)
+    volume, surface_area = run_pmc.setup.volume(rad_dict)
+    return float(surface_area), float(volume), rad_dict, ins
+
+
+def inv_configure(alg_tol, model):
+    import Constants
+    print("Beginning Inventor configure.")
+    os.system('\"C:\\Users\\kisac\\Documents\\visual studio 2015\\Projects\\Inventor_PMC\\Inventor_PMC\\bin\\Debug\\Inventor_PMC.exe\" {0} {1} {2}'.format(model, Constants.DENSITY, alg_tol if alg_tol != -1 else ""))
+    point_file = "C:\\Users\\kisac\\CLionProjects\\DTestFull\\temp_Inv_spheres.txt"
     rad_dict, ins, ons = read_shared_cover(point_file, alg_tol)
     import run_pmc
     # print(rad_dict)
@@ -59,7 +86,7 @@ def read_shared_cover(filename, rad):
                 ins.append(p)
             elif int(pmc) == 0:
                 p = tuple(eval(point))
-                # rad_dict[p] = rad
+                # rad_dict[p] = rad  # Toggle this to have shared files include ON points
                 ons.append(p)
     return rad_dict, ins, ons
 
