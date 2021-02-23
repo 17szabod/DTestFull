@@ -1,0 +1,12 @@
+Running test sw_vs_occ on model 1 data/black_arrow_nose.step and model 2 C:\\Users\\kisac\\Downloads\\black_arrow_nose.sldprt with tolerance 0.000010:
+
+Volume:
+Systems OpenCasCade and sw_vs_occ have incompatible volumes with a difference of -101622.13446021
+Volume of first proxy model: 68823.64589809, volume of second proxy model: 170445.78035831
+
+Surface Area:
+Systems OpenCasCade and sw_vs_occ have incompatible areas with a difference of -8813.60449535
+Surface area of first proxy model: 11113.43647874, Surface area of second proxy model: 19927.04097408
+
+Hausdorff Distance:
+Systems OpenCasCade and sw_vs_occ have an incompatible Hausdorff Distance of 32.10982727
