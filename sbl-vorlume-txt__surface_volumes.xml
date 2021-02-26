@@ -1,794 +1,1630 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <!DOCTYPE boost_serialization>
 <boost_serialization signature="serialization::archive" version="15">
-<total_particles>71</total_particles>
-<buried_particles>16</buried_particles>
-<exposed_particles>55</exposed_particles>
-<total_volume>4.73106105162251843e+04</total_volume>
-<total_area>8.24832267846712421e+03</total_area>
+<total_particles>147</total_particles>
+<buried_particles>0</buried_particles>
+<exposed_particles>147</exposed_particles>
+<total_volume>7.74708286583618028e+05</total_volume>
+<total_area>7.04893693591243937e+04</total_area>
 <restrictions class_id="0" tracking_level="0" version="0">
-	<count>71</count>
+	<count>147</count>
 	<item_version>0</item_version>
 	<item class_id="1" tracking_level="0" version="0">
 		<particle class_id="2" tracking_level="0" version="0">
-			<x>3.78000438191482999e+01</x>
-			<y>-8.88178419700125075e-15</y>
+			<x>3.81000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>1234.9</total_volume>
-		<total_area>470.61</total_area>
+		<total_volume>5398.3</total_volume>
+		<total_area>551.12</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>4.52000657287224996e+01</x>
-			<y>-8.88178419700125075e-15</y>
+			<x>3.81000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>937.94</total_volume>
-		<total_area>216.26</total_area>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>5.26000876382966993e+01</x>
-			<y>-7.40004381914836973e+00</y>
+			<x>3.81000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5398.3</total_volume>
+		<total_area>551.12</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>939.27</total_volume>
-		<total_area>234.46</total_area>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>5.26000876382966993e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>3.81000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>939.27</total_volume>
-		<total_area>234.46</total_area>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>5.26000876382966993e+01</x>
-			<y>-8.88178419700125075e-15</y>
+			<x>3.81000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5398.3</total_volume>
+		<total_area>551.12</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>5.26000876382966993e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>939.27</total_volume>
-		<total_area>234.46</total_area>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>5.26000876382966993e+01</x>
-			<y>7.40004381914835996e+00</y>
+			<x>3.81000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>3.81000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>939.27</total_volume>
-		<total_area>234.46</total_area>
+		<total_volume>5398.3</total_volume>
+		<total_area>551.12</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.00001095478708990e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>3.81000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>831.8</total_volume>
-		<total_area>195.79</total_area>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.00001095478708990e+01</x>
-			<y>-7.40004381914836973e+00</y>
+			<x>4.09000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.09000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>524.45</total_volume>
-		<total_area>37.051</total_area>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.00001095478708990e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.09000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>831.8</total_volume>
-		<total_area>195.79</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.00001095478708990e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.09000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>524.45</total_volume>
-		<total_area>37.051</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.00001095478708990e+01</x>
-			<y>-8.88178419700125075e-15</y>
+			<x>4.09000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.09000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>6.00001095478708990e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>524.45</total_volume>
-		<total_area>37.051</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.00001095478708990e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.09000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>831.8</total_volume>
-		<total_area>195.79</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.00001095478708990e+01</x>
-			<y>7.40004381914835996e+00</y>
+			<x>4.09000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.09000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.09000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.09000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>524.45</total_volume>
-		<total_area>37.051</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.00001095478708990e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.09000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>831.8</total_volume>
-		<total_area>195.79</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>-1.48000876382967004e+01</y>
+			<x>4.09000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.09000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.09000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.09000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>937.83</total_volume>
-		<total_area>229.98</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.09000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>620.24</total_volume>
-		<total_area>60.848</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>-7.40004381914836973e+00</y>
+			<x>4.09000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.09000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.09000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>620.24</total_volume>
-		<total_area>60.848</total_area>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>-1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.09000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>937.83</total_volume>
-		<total_area>229.98</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.37000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>-8.88178419700125075e-15</y>
+			<x>4.37000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>937.83</total_volume>
-		<total_area>229.98</total_area>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.37000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>620.24</total_volume>
-		<total_area>60.848</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>7.40004381914835996e+00</y>
+			<x>4.37000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.37000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.37000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>620.24</total_volume>
-		<total_area>60.848</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>6.74001314574450987e+01</x>
-			<y>1.48000876382967004e+01</y>
+			<x>4.37000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.37000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.37000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.37000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.37000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>937.83</total_volume>
-		<total_area>229.98</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-1.48000876382967004e+01</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.37000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>810.34</total_volume>
-		<total_area>176.44</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-1.48000876382967004e+01</y>
+			<x>4.37000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.37000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.37000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.37000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-1.48000876382967004e+01</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.37000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>810.34</total_volume>
-		<total_area>176.44</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>-1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.37000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>810.34</total_volume>
-		<total_area>176.44</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.37000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-7.40004381914836973e+00</y>
+			<x>4.37000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>810.34</total_volume>
-		<total_area>176.44</total_area>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>-1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.37000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.65000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-8.88178419700125075e-15</y>
+			<x>4.65000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>-1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.65000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>810.34</total_volume>
-		<total_area>176.44</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.65000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>7.40004381914835996e+00</y>
+			<x>4.65000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.65000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>1</is_buried>
-		<total_volume>405.23</total_volume>
-		<total_area>0</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>810.34</total_volume>
-		<total_area>176.44</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>1.48000876382967004e+01</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.65000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>810.34</total_volume>
-		<total_area>176.44</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>1.48000876382967004e+01</y>
+			<x>4.65000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.65000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.65000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.65000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>7.48001533670192060e+01</x>
-			<y>1.48000876382967004e+01</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.65000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>810.34</total_volume>
-		<total_area>176.44</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-1.48000876382967004e+01</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.65000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>852.81</total_volume>
-		<total_area>218.88</total_area>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-1.48000876382967004e+01</y>
+			<x>4.65000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.65000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.65000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>704.41</total_volume>
-		<total_area>142.6</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-1.48000876382967004e+01</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.65000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>852.81</total_volume>
-		<total_area>218.88</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>-1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.65000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>852.81</total_volume>
-		<total_area>218.88</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.65000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-7.40004381914836973e+00</y>
+			<x>4.65000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.65000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-7.40004381914836973e+00</y>
-			<z>1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.93000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>852.81</total_volume>
-		<total_area>218.88</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>-1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>0</is_buried>
-		<total_volume>704.41</total_volume>
-		<total_area>142.6</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-8.88178419700125075e-15</y>
+			<x>4.93000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.93000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>-8.88178419700125075e-15</y>
-			<z>1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.93000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>704.41</total_volume>
-		<total_area>142.6</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>-1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.93000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>852.81</total_volume>
-		<total_area>218.88</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
-		</particle>
-		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
-	</item>
-	<item>
-		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>7.40004381914835996e+00</y>
+			<x>4.93000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.93000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>547.45</total_volume>
-		<total_area>61.232</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>7.40004381914835996e+00</y>
-			<z>1.48000876382967004e+01</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.93000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>852.81</total_volume>
-		<total_area>218.88</total_area>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>1.48000876382967004e+01</y>
-			<z>-7.40004381914835996e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.93000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>852.81</total_volume>
-		<total_area>218.88</total_area>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>1.48000876382967004e+01</y>
+			<x>4.93000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.93000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
 			<z>0.00000000000000000e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>704.41</total_volume>
-		<total_area>142.6</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
 	</item>
 	<item>
 		<particle>
-			<x>8.22001752765933986e+01</x>
-			<y>1.48000876382967004e+01</y>
-			<z>7.40004381914836973e+00</z>
-			<weight>4.90000000000000000e+01</weight>
+			<x>4.93000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
 		</particle>
 		<is_buried>0</is_buried>
-		<total_volume>852.81</total_volume>
-		<total_area>218.88</total_area>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.93000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.93000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.93000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.93000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.93000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.93000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.93000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.93000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>4.93000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3369.6</total_volume>
+		<total_area>65.518</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5352.2</total_volume>
+		<total_area>456.87</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.21000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7332.6</total_volume>
+		<total_area>885.91</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5398.3</total_volume>
+		<total_area>551.12</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>-2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>-1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5398.3</total_volume>
+		<total_area>551.12</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>0.00000000000000000e+00</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5398.3</total_volume>
+		<total_area>551.12</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>3415.7</total_volume>
+		<total_area>159.77</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>1.10000000000000000e+01</y>
+			<z>2.20000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>-1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>0.00000000000000000e+00</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>5398.3</total_volume>
+		<total_area>551.12</total_area>
+	</item>
+	<item>
+		<particle>
+			<x>5.49000000000000000e+02</x>
+			<y>2.20000000000000000e+01</y>
+			<z>1.10000000000000000e+01</z>
+			<weight>2.25000000000000000e+02</weight>
+		</particle>
+		<is_buried>0</is_buried>
+		<total_volume>7378.6</total_volume>
+		<total_area>980.16</total_area>
 	</item>
 </restrictions>
 </boost_serialization>

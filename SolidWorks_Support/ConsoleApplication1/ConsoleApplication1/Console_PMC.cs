@@ -13,13 +13,23 @@ namespace SW_PMC_Grid
 {
     class Console_PMC
     {
+        public static T Min<T>(params T[] values)
+        {
+            return values.Min();
+        }
+
+        public static T Max<T>(params T[] values)
+        {
+            return values.Max();
+        }
+
         // args are of the form --SW_PMC_Grid.exe filepath density alg_tol-- where alg_tol is an optional argument
         static void Main(string[] args)
         {
             int density = int.Parse(args[1]);
             string filename = args[0];
             double pmc_param = double.Parse(args[2]);
-            Console.WriteLine($"Running Inventor PMC with parameters pmc_param: {pmc_param}, density: {density}");
+            Console.WriteLine($"Running SolidWorks PMC with parameters pmc_param: {pmc_param}, density: {density}");
             double sys_eps = 1e-5;
 
             var progId = "SldWorks.Application";
@@ -92,16 +102,28 @@ namespace SW_PMC_Grid
             }
             double[] bbox;
             bbox = (double[])swBody.GetBodyBox();
-            Console.WriteLine($"Bounding Box: {bbox}");
-            double minX = Math.Min(bbox[0], bbox[3]);
-            double minY = Math.Min(bbox[1], bbox[4]);
-            double minZ = Math.Min(bbox[2], bbox[5]);
-            double maxX = Math.Max(bbox[0], bbox[3]);
-            double maxY = Math.Max(bbox[1], bbox[4]);
-            double maxZ = Math.Max(bbox[2], bbox[5]);
-            double xh = (maxX - minX) / density;
-            double yh = (maxY - minY) / density;
-            double zh = (maxZ - minZ) / density;
+            double minX = Double.MaxValue;
+            double minY = Double.MaxValue;
+            double minZ = Double.MaxValue;
+            double maxX = Double.MinValue;
+            double maxY = Double.MinValue;
+            double maxZ = Double.MinValue;
+            /////////////////////////////////////////////////////
+            // Need to more carefully get the bounding box:
+            foreach (Face face in swBody.GetFaces())
+            {
+                var tessTriangles = face.GetTessTriangles(true);
+                for (int i=0; i<tessTriangles.Length/9; i+=9)
+                {
+                    maxX = Max(tessTriangles[9 * i + 0], tessTriangles[9 * i + 3], tessTriangles[9 * i + 6], maxX);
+                    minX = Min(tessTriangles[9 * i + 0], tessTriangles[9 * i + 3], tessTriangles[9 * i + 6], minX);
+                    maxY = Max(tessTriangles[9 * i + 1], tessTriangles[9 * i + 4], tessTriangles[9 * i + 7], maxY);
+                    minY = Min(tessTriangles[9 * i + 1], tessTriangles[9 * i + 4], tessTriangles[9 * i + 7], minY);
+                    maxZ = Max(tessTriangles[9 * i + 2], tessTriangles[9 * i + 5], tessTriangles[9 * i + 8], maxZ);
+                    minZ = Min(tessTriangles[9 * i + 2], tessTriangles[9 * i + 5], tessTriangles[9 * i + 8], minZ);
+                }
+            }
+            /////////////////////////////////////////////////////
             //pmc_param = manual_pmc_param ? Math.Sqrt(xh * xh + yh * yh + zh * zh)/2 + sys_eps : double.Parse(args[2]);  // The minimum radius to not have holes plus sys_eps
             pmc_param /= 1000;
             // Now that we have computed an approximate, expand the grid
@@ -111,9 +133,10 @@ namespace SW_PMC_Grid
             maxX += pmc_param;
             maxY += pmc_param;
             maxZ += pmc_param;
-            xh = (maxX - minX) / density;
-            yh = (maxY - minY) / density;
-            zh = (maxZ - minZ) / density;
+            double xh = (maxX - minX) / density;
+            double yh = (maxY - minY) / density;
+            double zh = (maxZ - minZ) / density;
+            Console.WriteLine($"Bounding Box: {minX}, {minY}, {minZ}, {maxX}, {maxY}, {maxZ}");
             Console.WriteLine($"xh: {xh}, yh: {yh}, zh: {zh}");
             Console.WriteLine($"I am currently using pmc param of {pmc_param}, when the exact would be {Math.Sqrt(xh * xh + yh * yh + zh * zh) / 2 + sys_eps}");
             int[,,] pmc_results = new int[density + 1, density + 1, density + 1];

@@ -39,7 +39,7 @@ def volume(rad_dict):
     from scp import SCPClient
     # Declare credentials
     # TODO: Don't hard code my password! Duygu if you see this just pretend you didn't :)
-    host = '10.141.190.248'  # dynamic
+    host = '10.141.249.247'  # dynamic
     username = 'daniel'
     password = 'almabolt3'
 

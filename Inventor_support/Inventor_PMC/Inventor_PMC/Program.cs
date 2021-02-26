@@ -87,7 +87,7 @@ namespace Inventor_PMC
             xh = (maxX - minX) / density;
             yh = (maxY - minY) / density;
             zh = (maxZ - minZ) / density;
-            Debug.Print($"Bound box is {minX}, {minY}, {minZ}, {maxX}, {maxY}, {maxZ}");
+            Console.WriteLine($"Bound box is {minX}, {minY}, {minZ}, {maxX}, {maxY}, {maxZ}");
             Console.WriteLine($"xh: {xh}, yh: {yh}, zh: {zh}");
             Console.WriteLine($"I am currently using pmc param of {pmc_param}, when the exact would be {Math.Sqrt(xh * xh + yh * yh + zh * zh) / 2 + sys_eps}");
             int[,,] pmc_results = new int[density + 1, density + 1, density + 1];
