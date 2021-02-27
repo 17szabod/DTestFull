@@ -1,0 +1,12 @@
+Running test inv_vs_sw_shaft on model 1 C:\Users\kisac\CLionProjects\DTestFull\data\black_arrow_shaft.SLDPRT and model 2 C:\Users\kisac\CLionProjects\DTestFull\data\black_arrow_shaft.ipt with tolerance 10.000000:
+
+Volume:
+Systems SolidWorks and Inventor have compatible volumes with a difference of -804.79502392
+Volume of first proxy model: 773903.49155969, volume of second proxy model: 774708.28658362
+
+Surface Area:
+Systems SolidWorks and Inventor have compatible areas with a difference of -86.80497910
+Surface area of first proxy model: 70402.56438003, Surface area of second proxy model: 70489.36935912
+
+Hausdorff Distance:
+Systems SolidWorks and Inventor have a compatible Hausdorff Distance of 0.11445804

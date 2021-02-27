@@ -1,0 +1,12 @@
+Running test Init_test on model 1 data/black_arrow_nose.step and model 2 C:\\Users\\kisac\\Downloads\\black_arrow_nose.sldprt with tolerance 0.000010:
+
+Volume:
+Systems OpenCasCade and Init_test have incompatible volumes with a difference of 19987.40306723
+Volume of first proxy model: 68823.64589809, volume of second proxy model: 48836.24283087
+
+Surface Area:
+Systems OpenCasCade and Init_test have incompatible areas with a difference of 2357.02290471
+Surface area of first proxy model: 11113.43647874, Surface area of second proxy model: 8756.41357403
+
+Hausdorff Distance:
+Systems OpenCasCade and Init_test have an incompatible Hausdorff Distance of 23.44735857
