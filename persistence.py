@@ -1,11 +1,11 @@
 import gudhi
 import pyexcel as pe
 import matplotlib.pyplot as plt
-
-pc2_matrix = pe.get_array(file_name='/Users/engs2281/Documents/Interoperability/SW_allpts.xls')
-# We assume the max distance between two points is max_edge_length
-rips_complex = gudhi.RipsComplex(points=pc2_matrix,
-                                 max_edge_length=11.0)
+from skimage import metrics
+pc1_matrix = pe.get_array(file_name='/Users/engs2281/Documents/Interoperability/INV_allpts.xls')
+# We assume the max distance between two points is max_edge_length -- 2epsilon
+rips_complex = gudhi.RipsComplex(points=pc1_matrix,
+                                 max_edge_length=60.0)
 
 simplex_tree = rips_complex.create_simplex_tree(max_dimension=3)
 
@@ -28,7 +28,7 @@ print(simplex_tree.betti_numbers())
 
 pc2_matrix = pe.get_array(file_name='/Users/engs2281/Documents/Interoperability/SW_allpts.xls') # done
 rips_complex2 = gudhi.RipsComplex(points=pc2_matrix,
-                                 max_edge_length=11.0)
+                                 max_edge_length=60.0)
 simplex_tree2 = rips_complex2.create_simplex_tree(max_dimension=3)
 result_str2 = 'Rips complex is of dimension ' + repr(simplex_tree2.dimension()) + ' - ' + \
     repr(simplex_tree2.num_simplices()) + ' simplices - ' + \
@@ -51,3 +51,6 @@ a1=simplex_tree.persistence_intervals_in_dimension(1)
 a2=simplex_tree2.persistence_intervals_in_dimension(1)
 message = "Bottleneck distance approximation between the diagrams=" + '%.2f' % gudhi.bottleneck_distance(a1, a2, 0.1)
 print(message)
+
+
+
