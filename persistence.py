@@ -2,6 +2,7 @@ import gudhi
 import pyexcel as pe
 import matplotlib.pyplot as plt
 from skimage import metrics
+
 pc1_matrix = pe.get_array(file_name='/Users/engs2281/Documents/Interoperability/INV_allpts.xls')
 # We assume the max distance between two points is max_edge_length -- 2epsilon
 rips_complex = gudhi.RipsComplex(points=pc1_matrix,

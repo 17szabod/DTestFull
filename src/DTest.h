@@ -26,25 +26,13 @@ typedef struct {
     char *templateName;
 } Template;
 
-/**
- * A Properties structure that encodes the properties of the cover of a model
- */
-typedef struct {
-    double surfaceArea;
-    double volume;
-    unsigned long num_points;
-    double **proxyModel;  // A 2D, n by 4 array representing a union of balls
-    // NOTE: proxyModel, because of its size, is on the heap, so free it after use
-    // Also, it would be much more efficient to handle this via some stream, as it would avoid memory access
-} Properties;
-
 float tolerance;
 
 Template readTemplate(char *filename, char *testName, int debug);// what is testName?, Duygu
 
 int setTolerance(float tol);
 
-float getTolerance();
+float getTolerance(void);
 
 int startConfigureScript(Properties *props[2], Template template1, Template template2, int debug);
 

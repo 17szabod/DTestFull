@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 # from solid import *
 import utils
 import numpy as np
+import gudhi
 
 
 ########################################################################################################################
@@ -40,6 +41,21 @@ def volume(rad_dict):
     volume = tree.getroot()[3].text
     area = tree.getroot()[4].text
     return volume, area
+
+
+# computes the persistence information
+# Returns: Betti numbers and persistence intervals for bottleneck distance calculation
+def persistence(rad_dict):
+    points = list([list(p) for p in rad_dict.keys()])  # convert from tuples to lists
+    rips_complex = gudhi.RipsComplex(points=points,
+                                     max_edge_length=60.0)
+    simplex_tree = rips_complex.create_simplex_tree(max_dimension=3)
+    return simplex_tree.betti_numbers(), simplex_tree.persistence_intervals_in_dimension(1)
+
+
+# Computes the bottleneck distance between two given persistence arrays
+def bottleneck(persistence1, persistence2):
+    return gudhi.bottleneck_distance(persistence1, persistence2, 0.1)
 
 
 # Finds the volume centroid of the union of balls defined by rad_dict - requires uniform radii
@@ -120,6 +136,7 @@ def OCC_setup(name):
     return None
     ###############################################################################
 
+
 # Gets OCC System Precision (Precision::Confusion())
 def get_OCC_Precision():
     import OCC.Core.Precision as Precision
@@ -132,6 +149,7 @@ def write_STEP(shape, name):
     writer = STEPControl.STEPControl_Writer()
     writer.Transfer(shape, STEPControl.STEPControl_AsIs)
     writer.Write(name)
+
 
 def occ_Convex_Hull(rad_dict):
     ch = utils.ball_conv_hull(rad_dict)
