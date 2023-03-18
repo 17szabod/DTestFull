@@ -3,6 +3,8 @@
 //
 
 #include "DTest.h"
+#include "src/PTemplate.h"
+#include "src/PTemplate.c"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -284,39 +286,421 @@ void dump_properties(Properties prop) {
 //    return sock;
 //}
 
-/**
- * The main call to compute the properties of a template that is an OCC system
- * @param template The given template containing settings etc
- * @param pModule The Python module to connect to
- * @param prop The Properties struct to populate
- * @param debug A flag for debug mode
- * @return 0 for success, 1 for failure
- */
-int runOCCConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
-    PyObject * pFunc;
-    pFunc = PyObject_GetAttrString(pModule, "occ_configure");
-    /* pFunc is a new reference */
-
-    if (pFunc && PyCallable_Check(pFunc)) {
-
-        PyObject * pArgs, *pValue, *pArg1, *pArg2;
-        if (template.system != OpenCasCade) {
-            fprintf(stderr, "Tried to run OCC configure on system %i, which is not OCC.\n", template.system);
-            exit(1);
-        }
-        if (debug) {
-            printf("Calling a new round of occ configure\n");
-        }
-        pArgs = PyTuple_New(2);
-        // The arguments will be: alg_tol, model
-        // Convert arguments to Python types
+///**
+// * The main call to compute the properties of a template that is an OCC system
+// * @param template The given template containing settings etc
+// * @param pModule The Python module to connect to
+// * @param prop The Properties struct to populate
+// * @param debug A flag for debug mode
+// * @return 0 for success, 1 for failure
+// */
+//int runOCCConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
+//    PyObject * pFunc;
+//    pFunc = PyObject_GetAttrString(pModule, "occ_configure");
+//    /* pFunc is a new reference */
+//
+//    if (pFunc && PyCallable_Check(pFunc)) {
+//
+//        PyObject * pArgs, *pValue, *pArg1, *pArg2;
+//        if (template.system != OpenCasCade) {
+//            fprintf(stderr, "Tried to run OCC configure on system %i, which is not OCC.\n", template.system);
+//            exit(1);
+//        }
+//        if (debug) {
+//            printf("Calling a new round of occ configure\n");
+//        }
+//        pArgs = PyTuple_New(2);
+//        // The arguments will be: alg_tol, model
+//        // Convert arguments to Python types
+////        pArg1 = PyFloat_FromDouble(template.systemTolerance);
+////        printf("Alg precision: %f\n", template.algorithmPrecision);
+//        pArg1 = PyFloat_FromDouble(template.algorithmPrecision);
+//        pArg2 = PyUnicode_DecodeFSDefault(template.model);
+//        PyTuple_SetItem(pArgs, 0, pArg1);
+//        PyTuple_SetItem(pArgs, 1, pArg2);
+//        // No longer need to set bounding box from
+////        PyTuple_SetItem(pArgs, 2, pArg3);
+////        for (int i = 0; i < 2; i++) {
+////            for (int j = 0; j < 3; j++) {
+////                pBoundArg = PyFloat_FromDouble(template.bounds[i][j]);
+////                PyTuple_SetItem(pArgs, 3 + 3 * i + j, pBoundArg);
+////            }
+////        }
+//        // Call the function (I believe it waits for termination without needing to call Wait(NULL)
+//        pValue = PyObject_CallObject(pFunc, pArgs);
+//        if (pValue != NULL) {
+//            PyObject * pSurfAr, *pVol, *pProx;
+//            PyObject * pSize;
+//            if (!PyTuple_CheckExact(pValue)) {
+//                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
+//                exit(1);
+//            }
+//            if (debug) {
+//                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
+//            }
+//            // Get arguments back and make them usable
+//            pSurfAr = PyTuple_GetItem(pValue, 0);
+//            pVol = PyTuple_GetItem(pValue, 1);
+//            pProx = PyTuple_GetItem(pValue, 2);
+//            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
+//            if (debug) {
+//                printf("Surface Area: %f\n", prop->surfaceArea);
+//            }
+//            prop->volume = PyFloat_AsDouble(pVol);
+//            // The point array might be large, so we need to do some extra work
+//            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
+//            unsigned long size = PyLong_AsUnsignedLong(pSize);
+//            prop->proxyModel = malloc(size * sizeof(double *));
+//            for (int i = 0; i < size; i++) {
+//                prop->proxyModel[i] = malloc(4 * sizeof(double)); // Each entry is [x,y,z,rad]
+//            }
+//            if (debug) {
+//                printf("Successfully allocated space for proxy model\n");
+//            }
+//            PyObject * key, *value;
+//            PyObject * xVal, *yVal, *zVal;
+//            double x, y, z;
+//            int i = 0;
+//            Py_ssize_t
+//            pos = 0;
+//            if (debug) {
+//                printf("Starting to loop through each element in dictionary\n");
+//                printf("The size of the dictionary is: %lo\n", size);
+//            }
+//            prop->num_points = size;
+//            // Retrieves all the points
+//            while (PyDict_Next(pProx, &pos, &key, &value)) {
+//                xVal = PyTuple_GetItem(key, 0);
+//                yVal = PyTuple_GetItem(key, 1);
+//                zVal = PyTuple_GetItem(key, 2);
+//                x = PyFloat_AsDouble(xVal);
+//                y = PyFloat_AsDouble(yVal);
+//                z = PyFloat_AsDouble(zVal);
+//                if (debug) {
+//                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
+//                }
+//                if (x == -1 && PyErr_Occurred()) {
+//                    PyErr_Print();
+//                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
+//                    exit(1);
+//                }
+//                prop->proxyModel[i][0] = x;
+//                prop->proxyModel[i][1] = y;
+//                prop->proxyModel[i][2] = z;
+//                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
+//                i++;
+//            }
+//            if (debug) {
+//                printf("Successfully read the proxy model\n");
+//                printf("Successfully set the proxy model\n");
+//            }
+//            if (debug) {
+//                printf("Successfully populated new properties structure!\n");
+//                dump_properties(*prop);
+//            }
+//        } else {
+//            Py_DECREF(pFunc);
+//            Py_DECREF(pModule);
+//            PyErr_Print();
+//            fprintf(stderr, "Call failed\n");
+//            exit(1);
+//        }
+//    } else {
+//        if (PyErr_Occurred())
+//            PyErr_Print();
+//        fprintf(stderr, "Cannot find function \"%s\"\n", "occ_configure");
+//    }
+//    Py_DECREF(pFunc);
+//    return 0;
+//}
+//
+///**
+// * The main call to compute the properties of a template that is a SolidWorks system
+// * @param template The given template containing settings etc
+// * @param pModule The Python module to connect to
+// * @param prop The Properties struct to populate
+// * @param debug A flag for debug mode
+// * @return 0 for success, 1 for failure
+// */
+//int runSWConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
+//    PyObject * pFunc;
+//    pFunc = PyObject_GetAttrString(pModule, "sw_configure");
+//    /* pFunc is a new reference */
+//
+//    if (pFunc && PyCallable_Check(pFunc)) {
+//
+//        PyObject * pArgs, *pValue, *pArg1, *pArg2;
+//        if (template.system != SolidWorks) {
+//            fprintf(stderr, "Tried to run OCC configure on system %i, which is not OCC.\n", template.system);
+//            exit(1);
+//        }
+//        if (debug) {
+//            printf("Calling a new round of solidworks configure\n");
+//        }
+//        pArgs = PyTuple_New(2);
+//        // The arguments will be: alg_tol, model
+//        // Convert arguments to Python types
+////        pArg1 = PyFloat_FromDouble(template.systemTolerance);
+////        printf("Alg precision: %f\n", template.algorithmPrecision);
+//        pArg1 = PyFloat_FromDouble(template.algorithmPrecision);
+//        pArg2 = PyUnicode_DecodeFSDefault(template.model);
+//        PyTuple_SetItem(pArgs, 0, pArg1);
+//        PyTuple_SetItem(pArgs, 1, pArg2);
+//        // No longer need to set bounding box from
+////        PyTuple_SetItem(pArgs, 2, pArg3);
+////        for (int i = 0; i < 2; i++) {
+////            for (int j = 0; j < 3; j++) {
+////                pBoundArg = PyFloat_FromDouble(template.bounds[i][j]);
+////                PyTuple_SetItem(pArgs, 3 + 3 * i + j, pBoundArg);
+////            }
+////        }
+//        // Call the function (I believe it waits for termination without needing to call Wait(NULL)
+//        pValue = PyObject_CallObject(pFunc, pArgs);
+//        if (pValue != NULL) {
+//            PyObject * pSurfAr, *pVol, *pProx;
+//            PyObject * pSize;
+//            if (!PyTuple_CheckExact(pValue)) {
+//                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
+//                exit(1);
+//            }
+//            if (debug) {
+//                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
+//            }
+//            // Get arguments back and make them usable
+//            pSurfAr = PyTuple_GetItem(pValue, 0);
+//            pVol = PyTuple_GetItem(pValue, 1);
+//            pProx = PyTuple_GetItem(pValue, 2);
+//            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
+//            if (debug) {
+//                printf("Surface Area: %f\n", prop->surfaceArea);
+//            }
+//            prop->volume = PyFloat_AsDouble(pVol);
+//            // The point array might be large, so we need to do some extra work
+//            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
+//            unsigned long size = PyLong_AsUnsignedLong(pSize);
+//            prop->proxyModel = malloc(size * sizeof(double *));
+//            for (int i = 0; i < size; i++) {
+//                prop->proxyModel[i] = malloc(4 * sizeof(double)); // Each entry is [x,y,z,rad]
+//            }
+//            if (debug) {
+//                printf("Successfully allocated space for proxy model\n");
+//            }
+//            PyObject * key, *value;
+//            PyObject * xVal, *yVal, *zVal;
+//            double x, y, z;
+//            int i = 0;
+//            Py_ssize_t
+//            pos = 0;
+//            if (debug) {
+//                printf("Starting to loop through each element in dictionary\n");
+//                printf("The size of the dictionary is: %lo\n", size);
+//            }
+//            prop->num_points = size;
+//            // Retrieves all the points
+//            while (PyDict_Next(pProx, &pos, &key, &value)) {
+//                xVal = PyTuple_GetItem(key, 0);
+//                yVal = PyTuple_GetItem(key, 1);
+//                zVal = PyTuple_GetItem(key, 2);
+//                x = PyFloat_AsDouble(xVal);
+//                y = PyFloat_AsDouble(yVal);
+//                z = PyFloat_AsDouble(zVal);
+//                if (debug) {
+//                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
+//                }
+//                if (x == -1 && PyErr_Occurred()) {
+//                    PyErr_Print();
+//                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
+//                    exit(1);
+//                }
+//                prop->proxyModel[i][0] = x;
+//                prop->proxyModel[i][1] = y;
+//                prop->proxyModel[i][2] = z;
+//                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
+//                i++;
+//            }
+//            if (debug) {
+//                printf("Successfully read the proxy model\n");
+//                printf("Successfully set the proxy model\n");
+//            }
+//            if (debug) {
+//                printf("Successfully populated new properties structure!\n");
+//                dump_properties(*prop);
+//            }
+//        } else {
+//            Py_DECREF(pFunc);
+//            Py_DECREF(pModule);
+//            PyErr_Print();
+//            fprintf(stderr, "Call failed\n");
+//            exit(1);
+//        }
+//    } else {
+//        if (PyErr_Occurred())
+//            PyErr_Print();
+//        fprintf(stderr, "Cannot find function \"%s\"\n", "occ_configure");
+//    }
+//    Py_DECREF(pFunc);
+//    return 0;
+//}
+//
+///**
+// * The main call to compute the properties of a template that is a SolidWorks system
+// * @param template The given template containing settings etc
+// * @param pModule The Python module to connect to
+// * @param prop The Properties struct to populate
+// * @param debug A flag for debug mode
+// * @return 0 for success, 1 for failure
+// */
+//int runInvConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
+//    PyObject * pFunc;
+//    pFunc = PyObject_GetAttrString(pModule, "inv_configure");
+//    /* pFunc is a new reference */
+//
+//    if (pFunc && PyCallable_Check(pFunc)) {
+//
+//        PyObject * pArgs, *pValue, *pArg1, *pArg2;
+//        if (template.system != Inventor) {
+//            fprintf(stderr, "Tried to run Inventor configure on system %i, which is not Inventor.\n", template.system);
+//            exit(1);
+//        }
+//        if (debug) {
+//            printf("Calling a new round of Inventor configure\n");
+//        }
+//        pArgs = PyTuple_New(2);
+//        // The arguments will be: alg_tol, model
+//        // Convert arguments to Python types
+////        pArg1 = PyFloat_FromDouble(template.systemTolerance);
+////        printf("Alg precision: %f\n", template.algorithmPrecision);
+//        pArg1 = PyFloat_FromDouble(template.algorithmPrecision);
+//        pArg2 = PyUnicode_DecodeFSDefault(template.model);
+//        PyTuple_SetItem(pArgs, 0, pArg1);
+//        PyTuple_SetItem(pArgs, 1, pArg2);
+//        // No longer need to set bounding box from
+////        PyTuple_SetItem(pArgs, 2, pArg3);
+////        for (int i = 0; i < 2; i++) {
+////            for (int j = 0; j < 3; j++) {
+////                pBoundArg = PyFloat_FromDouble(template.bounds[i][j]);
+////                PyTuple_SetItem(pArgs, 3 + 3 * i + j, pBoundArg);
+////            }
+////        }
+//        // Call the function (I believe it waits for termination without needing to call Wait(NULL)
+//        pValue = PyObject_CallObject(pFunc, pArgs);
+//        if (pValue != NULL) {
+//            PyObject * pSurfAr, *pVol, *pProx;
+//            PyObject * pSize;
+//            if (!PyTuple_CheckExact(pValue)) {
+//                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
+//                exit(1);
+//            }
+//            if (debug) {
+//                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
+//            }
+//            // Get arguments back and make them usable
+//            pSurfAr = PyTuple_GetItem(pValue, 0);
+//            pVol = PyTuple_GetItem(pValue, 1);
+//            pProx = PyTuple_GetItem(pValue, 2);
+//            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
+//            if (debug) {
+//                printf("Surface Area: %f\n", prop->surfaceArea);
+//            }
+//            prop->volume = PyFloat_AsDouble(pVol);
+//            // The point array might be large, so we need to do some extra work
+//            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
+//            unsigned long size = PyLong_AsUnsignedLong(pSize);
+//            prop->proxyModel = malloc(size * sizeof(double *));
+//            for (int i = 0; i < size; i++) {
+//                prop->proxyModel[i] = malloc(4 * sizeof(double)); // Each entry is [x,y,z,rad]
+//            }
+//            if (debug) {
+//                printf("Successfully allocated space for proxy model\n");
+//            }
+//            PyObject * key, *value;
+//            PyObject * xVal, *yVal, *zVal;
+//            double x, y, z;
+//            int i = 0;
+//            Py_ssize_t
+//            pos = 0;
+//            if (debug) {
+//                printf("Starting to loop through each element in dictionary\n");
+//                printf("The size of the dictionary is: %lo\n", size);
+//            }
+//            prop->num_points = size;
+//            // Retrieves all the points
+//            while (PyDict_Next(pProx, &pos, &key, &value)) {
+//                xVal = PyTuple_GetItem(key, 0);
+//                yVal = PyTuple_GetItem(key, 1);
+//                zVal = PyTuple_GetItem(key, 2);
+//                x = PyFloat_AsDouble(xVal);
+//                y = PyFloat_AsDouble(yVal);
+//                z = PyFloat_AsDouble(zVal);
+//                if (debug) {
+//                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
+//                }
+//                if (x == -1 && PyErr_Occurred()) {
+//                    PyErr_Print();
+//                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
+//                    exit(1);
+//                }
+//                prop->proxyModel[i][0] = x;
+//                prop->proxyModel[i][1] = y;
+//                prop->proxyModel[i][2] = z;
+//                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
+//                i++;
+//            }
+//            if (debug) {
+//                printf("Successfully read the proxy model\n");
+//                printf("Successfully set the proxy model\n");
+//            }
+//            if (debug) {
+//                printf("Successfully populated new properties structure!\n");
+//                dump_properties(*prop);
+//            }
+//        } else {
+//            Py_DECREF(pFunc);
+//            Py_DECREF(pModule);
+//            PyErr_Print();
+//            fprintf(stderr, "Call failed\n");
+//            exit(1);
+//        }
+//    } else {
+//        if (PyErr_Occurred())
+//            PyErr_Print();
+//        fprintf(stderr, "Cannot find function \"%s\"\n", "occ_configure");
+//    }
+//    Py_DECREF(pFunc);
+//    return 0;
+//}
+//
+//
+///**
+// * The main call to compute the properties of a template that is a SCAD system
+// * @param template The given template containing settings etc
+// * @param pModule The Python module to connect to
+// * @param prop The Properties struct to populate
+// * @param debug A flag for debug mode
+// * @return 0 for success, 1 for failure
+// */
+//int runSCADConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
+//    PyObject * pFunc, *pValue, *pArgs;
+//    pFunc = PyObject_GetAttrString(pModule, "scad_configure");
+//    /* pFunc is a new reference */
+//
+//    if (pFunc && PyCallable_Check(pFunc)) {
+//
+//        PyObject *pArg1, *pArg2, *pArg3, *pBoundArg;
+//        if (template.system != OpenSCAD) {
+//            fprintf(stderr, "Tried to run SCAD configure on system %i, which is not SCAD.\n", template.system);
+//            exit(1);
+//        }
+//        if (debug) {
+//            printf("Calling a new round of scad configure\n");
+//        }
+//        pArgs = PyTuple_New(9);
+//        // The arguments will be: Sys_eps, alg_eps, and some access to the shape (filename?)
 //        pArg1 = PyFloat_FromDouble(template.systemTolerance);
-//        printf("Alg precision: %f\n", template.algorithmPrecision);
-        pArg1 = PyFloat_FromDouble(template.algorithmPrecision);
-        pArg2 = PyUnicode_DecodeFSDefault(template.model);
-        PyTuple_SetItem(pArgs, 0, pArg1);
-        PyTuple_SetItem(pArgs, 1, pArg2);
-        // No longer need to set bounding box from
+//        pArg2 = PyFloat_FromDouble(template.algorithmPrecision);
+//        pArg3 = PyUnicode_DecodeFSDefault(template.model);
+//        PyTuple_SetItem(pArgs, 0, pArg1);
+//        PyTuple_SetItem(pArgs, 1, pArg2);
 //        PyTuple_SetItem(pArgs, 2, pArg3);
 //        for (int i = 0; i < 2; i++) {
 //            for (int j = 0; j < 3; j++) {
@@ -324,127 +708,124 @@ int runOCCConfigure(Template template, PyObject *pModule, Properties *prop, int 
 //                PyTuple_SetItem(pArgs, 3 + 3 * i + j, pBoundArg);
 //            }
 //        }
-        // Call the function (I believe it waits for termination without needing to call Wait(NULL)
-        pValue = PyObject_CallObject(pFunc, pArgs);
-        if (pValue != NULL) {
-            PyObject * pSurfAr, *pVol, *pProx;
-            PyObject * pSize;
-            if (!PyTuple_CheckExact(pValue)) {
-                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
-                exit(1);
-            }
-            if (debug) {
-                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
-            }
-            // Get arguments back and make them usable
-            pSurfAr = PyTuple_GetItem(pValue, 0);
-            pVol = PyTuple_GetItem(pValue, 1);
-            pProx = PyTuple_GetItem(pValue, 2);
-            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
-            if (debug) {
-                printf("Surface Area: %f\n", prop->surfaceArea);
-            }
-            prop->volume = PyFloat_AsDouble(pVol);
-            // The point array might be large, so we need to do some extra work
-            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
-            unsigned long size = PyLong_AsUnsignedLong(pSize);
-            prop->proxyModel = malloc(size * sizeof(double *));
-            for (int i = 0; i < size; i++) {
-                prop->proxyModel[i] = malloc(4 * sizeof(double)); // Each entry is [x,y,z,rad]
-            }
-            if (debug) {
-                printf("Successfully allocated space for proxy model\n");
-            }
-            PyObject * key, *value;
-            PyObject * xVal, *yVal, *zVal;
-            double x, y, z;
-            int i = 0;
-            Py_ssize_t
-            pos = 0;
-            if (debug) {
-                printf("Starting to loop through each element in dictionary\n");
-                printf("The size of the dictionary is: %lo\n", size);
-            }
-            prop->num_points = size;
-            // Retrieves all the points
-            while (PyDict_Next(pProx, &pos, &key, &value)) {
-                xVal = PyTuple_GetItem(key, 0);
-                yVal = PyTuple_GetItem(key, 1);
-                zVal = PyTuple_GetItem(key, 2);
-                x = PyFloat_AsDouble(xVal);
-                y = PyFloat_AsDouble(yVal);
-                z = PyFloat_AsDouble(zVal);
-                if (debug) {
-                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
-                }
-                if (x == -1 && PyErr_Occurred()) {
-                    PyErr_Print();
-                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
-                    exit(1);
-                }
-                prop->proxyModel[i][0] = x;
-                prop->proxyModel[i][1] = y;
-                prop->proxyModel[i][2] = z;
-                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
-                i++;
-            }
-            if (debug) {
-                printf("Successfully read the proxy model\n");
-                printf("Successfully set the proxy model\n");
-            }
-            if (debug) {
-                printf("Successfully populated new properties structure!\n");
-                dump_properties(*prop);
-            }
-        } else {
-            Py_DECREF(pFunc);
-            Py_DECREF(pModule);
-            PyErr_Print();
-            fprintf(stderr, "Call failed\n");
-            exit(1);
-        }
-    } else {
-        if (PyErr_Occurred())
-            PyErr_Print();
-        fprintf(stderr, "Cannot find function \"%s\"\n", "occ_configure");
-    }
-    Py_DECREF(pFunc);
-    return 0;
-}
-
-/**
- * The main call to compute the properties of a template that is a SolidWorks system
- * @param template The given template containing settings etc
- * @param pModule The Python module to connect to
- * @param prop The Properties struct to populate
- * @param debug A flag for debug mode
- * @return 0 for success, 1 for failure
- */
-int runSWConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
-    PyObject * pFunc;
-    pFunc = PyObject_GetAttrString(pModule, "sw_configure");
-    /* pFunc is a new reference */
-
-    if (pFunc && PyCallable_Check(pFunc)) {
-
-        PyObject * pArgs, *pValue, *pArg1, *pArg2;
-        if (template.system != SolidWorks) {
-            fprintf(stderr, "Tried to run OCC configure on system %i, which is not OCC.\n", template.system);
-            exit(1);
-        }
-        if (debug) {
-            printf("Calling a new round of solidworks configure\n");
-        }
-        pArgs = PyTuple_New(2);
-        // The arguments will be: alg_tol, model
-        // Convert arguments to Python types
+//        pValue = PyTuple_New(3);
+//        pValue = PyObject_CallObject(pFunc, pArgs);
+//        if (pValue != NULL) {
+//            PyObject * pSurfAr, *pVol, *pProx;
+//            PyObject * pSize;
+//            if (!PyTuple_CheckExact(pValue)) {
+//                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
+//                exit(1);
+//            }
+//            if (debug) {
+//                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
+//            }
+//            pSurfAr = PyTuple_GetItem(pValue, 0);
+//            pVol = PyTuple_GetItem(pValue, 1);
+//            pProx = PyTuple_GetItem(pValue, 2);
+//            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
+//            if (debug) {
+//                printf("Surface Area: %f\n", prop->surfaceArea);
+//            }
+//            prop->volume = PyFloat_AsDouble(pVol);
+//            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
+//            unsigned long size = PyLong_AsUnsignedLong(pSize);
+//            prop->proxyModel = malloc(size * sizeof(double *));
+//            for (int i = 0; i < size; i++) {
+//                prop->proxyModel[i] = malloc(4 * sizeof(double));
+//            }
+//            if (debug) {
+//                printf("Successfully allocated space for proxy model\n");
+//            }
+//            PyObject * key, *value;
+//            PyObject * xVal, *yVal, *zVal;
+//            double x, y, z;
+//            int i = 0;
+//            Py_ssize_t
+//                    pos = 0;
+//            if (debug) {
+//                printf("Starting to loop through each element in dictionary\n");
+//                printf("The size of the dictionary is: %lo\n", size);
+//            }
+//            prop->num_points = size;
+//            while (PyDict_Next(pProx, &pos, &key, &value)) {
+//                xVal = PyTuple_GetItem(key, 0);
+//                yVal = PyTuple_GetItem(key, 1);
+//                zVal = PyTuple_GetItem(key, 2);
+//                x = PyFloat_AsDouble(xVal);
+//                y = PyFloat_AsDouble(yVal);
+//                z = PyFloat_AsDouble(zVal);
+//                if (debug) {
+//                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
+//                }
+//                if (x == -1 && PyErr_Occurred()) {
+//                    PyErr_Print();
+//                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
+//                    exit(1);
+//                }
+//                prop->proxyModel[i][0] = x;
+//                prop->proxyModel[i][1] = y;
+//                prop->proxyModel[i][2] = z;
+//                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
+//                i++;
+//            }
+//            if (debug) {
+//                printf("Successfully read the proxy model\n");
+//                printf("Successfully set the proxy model\n");
+//            }
+//            if (debug) {
+//                printf("Successfully populated new properties structure!\n");
+//                dump_properties(*prop);
+//            }
+//
+//        } else {
+//            Py_DECREF(pFunc);
+//            Py_DECREF(pModule);
+//            PyErr_Print();
+//            fprintf(stderr, "Call failed\n");
+//            exit(1);
+//        }
+//    } else {
+//        if (PyErr_Occurred())
+//            PyErr_Print();
+//        fprintf(stderr, "Cannot find function \"%s\"\n", "scad_configure");
+//    }
+//    return 0;
+//}
+//
+//
+///**
+// * The main call to compute the properties of a template that is a MeshLab system
+// * @param template The given template containing settings etc
+// * @param pModule The Python module to connect to
+// * @param prop The Properties struct to populate
+// * @param debug A flag for debug mode
+// * @return 0 for success, 1 for failure
+// */
+//int runMeshLabConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
+//    if (debug) {
+//        fprintf(stdout, "Starting to run MeshLab Configure.\n");
+//    }
+//    PyObject * pFunc;
+//    pFunc = PyObject_GetAttrString(pModule, "meshlab_configure_cover");
+//    /* pFunc is a new reference */
+//
+//    if (pFunc && PyCallable_Check(pFunc)) {
+//        PyObject * pArgs, *pValue, *pArg1, *pArg2, *pArg3, *pBoundArg;
+//        if (template.system != MeshLab) {
+//            fprintf(stderr, "Tried to run MeshLab configure on system %i, which is not MeshLab.\n", template.system);
+//            exit(1);
+//        }
+//        if (debug) {
+//            printf("Calling a new round of MeshLab configure\n");
+//        }
+//        pArgs = PyTuple_New(9);
+//        // The arguments will be: Sys_eps, alg_eps, and some access to the shape (filename?)
 //        pArg1 = PyFloat_FromDouble(template.systemTolerance);
-//        printf("Alg precision: %f\n", template.algorithmPrecision);
-        pArg1 = PyFloat_FromDouble(template.algorithmPrecision);
-        pArg2 = PyUnicode_DecodeFSDefault(template.model);
-        PyTuple_SetItem(pArgs, 0, pArg1);
-        PyTuple_SetItem(pArgs, 1, pArg2);
-        // No longer need to set bounding box from
+//        pArg2 = PyFloat_FromDouble(template.algorithmPrecision);
+//        pArg3 = PyUnicode_DecodeFSDefault(template.model);
+//        PyTuple_SetItem(pArgs, 0, pArg1);
+//        PyTuple_SetItem(pArgs, 1, pArg2);
 //        PyTuple_SetItem(pArgs, 2, pArg3);
 //        for (int i = 0; i < 2; i++) {
 //            for (int j = 0; j < 3; j++) {
@@ -452,588 +833,209 @@ int runSWConfigure(Template template, PyObject *pModule, Properties *prop, int d
 //                PyTuple_SetItem(pArgs, 3 + 3 * i + j, pBoundArg);
 //            }
 //        }
-        // Call the function (I believe it waits for termination without needing to call Wait(NULL)
-        pValue = PyObject_CallObject(pFunc, pArgs);
-        if (pValue != NULL) {
-            PyObject * pSurfAr, *pVol, *pProx;
-            PyObject * pSize;
-            if (!PyTuple_CheckExact(pValue)) {
-                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
-                exit(1);
-            }
-            if (debug) {
-                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
-            }
-            // Get arguments back and make them usable
-            pSurfAr = PyTuple_GetItem(pValue, 0);
-            pVol = PyTuple_GetItem(pValue, 1);
-            pProx = PyTuple_GetItem(pValue, 2);
-            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
-            if (debug) {
-                printf("Surface Area: %f\n", prop->surfaceArea);
-            }
-            prop->volume = PyFloat_AsDouble(pVol);
-            // The point array might be large, so we need to do some extra work
-            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
-            unsigned long size = PyLong_AsUnsignedLong(pSize);
-            prop->proxyModel = malloc(size * sizeof(double *));
-            for (int i = 0; i < size; i++) {
-                prop->proxyModel[i] = malloc(4 * sizeof(double)); // Each entry is [x,y,z,rad]
-            }
-            if (debug) {
-                printf("Successfully allocated space for proxy model\n");
-            }
-            PyObject * key, *value;
-            PyObject * xVal, *yVal, *zVal;
-            double x, y, z;
-            int i = 0;
-            Py_ssize_t
-            pos = 0;
-            if (debug) {
-                printf("Starting to loop through each element in dictionary\n");
-                printf("The size of the dictionary is: %lo\n", size);
-            }
-            prop->num_points = size;
-            // Retrieves all the points
-            while (PyDict_Next(pProx, &pos, &key, &value)) {
-                xVal = PyTuple_GetItem(key, 0);
-                yVal = PyTuple_GetItem(key, 1);
-                zVal = PyTuple_GetItem(key, 2);
-                x = PyFloat_AsDouble(xVal);
-                y = PyFloat_AsDouble(yVal);
-                z = PyFloat_AsDouble(zVal);
-                if (debug) {
-                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
-                }
-                if (x == -1 && PyErr_Occurred()) {
-                    PyErr_Print();
-                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
-                    exit(1);
-                }
-                prop->proxyModel[i][0] = x;
-                prop->proxyModel[i][1] = y;
-                prop->proxyModel[i][2] = z;
-                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
-                i++;
-            }
-            if (debug) {
-                printf("Successfully read the proxy model\n");
-                printf("Successfully set the proxy model\n");
-            }
-            if (debug) {
-                printf("Successfully populated new properties structure!\n");
-                dump_properties(*prop);
-            }
-        } else {
-            Py_DECREF(pFunc);
-            Py_DECREF(pModule);
-            PyErr_Print();
-            fprintf(stderr, "Call failed\n");
-            exit(1);
-        }
-    } else {
-        if (PyErr_Occurred())
-            PyErr_Print();
-        fprintf(stderr, "Cannot find function \"%s\"\n", "occ_configure");
-    }
-    Py_DECREF(pFunc);
-    return 0;
-}
-
-/**
- * The main call to compute the properties of a template that is a SolidWorks system
- * @param template The given template containing settings etc
- * @param pModule The Python module to connect to
- * @param prop The Properties struct to populate
- * @param debug A flag for debug mode
- * @return 0 for success, 1 for failure
- */
-int runInvConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
-    PyObject * pFunc;
-    pFunc = PyObject_GetAttrString(pModule, "inv_configure");
-    /* pFunc is a new reference */
-
-    if (pFunc && PyCallable_Check(pFunc)) {
-
-        PyObject * pArgs, *pValue, *pArg1, *pArg2;
-        if (template.system != Inventor) {
-            fprintf(stderr, "Tried to run Inventor configure on system %i, which is not Inventor.\n", template.system);
-            exit(1);
-        }
-        if (debug) {
-            printf("Calling a new round of Inventor configure\n");
-        }
-        pArgs = PyTuple_New(2);
-        // The arguments will be: alg_tol, model
-        // Convert arguments to Python types
-//        pArg1 = PyFloat_FromDouble(template.systemTolerance);
-//        printf("Alg precision: %f\n", template.algorithmPrecision);
-        pArg1 = PyFloat_FromDouble(template.algorithmPrecision);
-        pArg2 = PyUnicode_DecodeFSDefault(template.model);
-        PyTuple_SetItem(pArgs, 0, pArg1);
-        PyTuple_SetItem(pArgs, 1, pArg2);
-        // No longer need to set bounding box from
-//        PyTuple_SetItem(pArgs, 2, pArg3);
-//        for (int i = 0; i < 2; i++) {
-//            for (int j = 0; j < 3; j++) {
-//                pBoundArg = PyFloat_FromDouble(template.bounds[i][j]);
-//                PyTuple_SetItem(pArgs, 3 + 3 * i + j, pBoundArg);
+//        pValue = PyTuple_New(3);
+//        pValue = PyObject_CallObject(pFunc, pArgs);
+//        if (pValue != NULL) {
+//            PyObject * pSurfAr, *pVol, *pProx;
+//            PyObject * pSize;
+//            if (!PyTuple_CheckExact(pValue)) {
+//                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
+//                exit(1);
 //            }
+//            if (debug) {
+//                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
+//            }
+//            pSurfAr = PyTuple_GetItem(pValue, 0);
+//            pVol = PyTuple_GetItem(pValue, 1);
+//            pProx = PyTuple_GetItem(pValue, 2);
+//            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
+//            if (debug) {
+//                printf("Surface Area: %f\n", prop->surfaceArea);
+//            }
+//            prop->volume = PyFloat_AsDouble(pVol);
+//            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
+//            unsigned long size = PyLong_AsUnsignedLong(pSize);
+//            prop->proxyModel = malloc(size * sizeof(double *));
+//            for (int i = 0; i < size; i++) {
+//                prop->proxyModel[i] = malloc(4 * sizeof(double));
+//            }
+//            if (debug) {
+//                printf("Successfully allocated space for proxy model\n");
+//            }
+//            PyObject * key, *value;
+//            PyObject * xVal, *yVal, *zVal;
+//            double x, y, z;
+//            int i = 0;
+//            Py_ssize_t
+//            pos = 0;
+//            if (debug) {
+//                printf("Starting to loop through each element in dictionary\n");
+//                printf("The size of the dictionary is: %lo\n", size);
+//            }
+//            prop->num_points = size;
+//            while (PyDict_Next(pProx, &pos, &key, &value)) {
+//                xVal = PyTuple_GetItem(key, 0);
+//                yVal = PyTuple_GetItem(key, 1);
+//                zVal = PyTuple_GetItem(key, 2);
+//                x = PyFloat_AsDouble(xVal);
+//                y = PyFloat_AsDouble(yVal);
+//                z = PyFloat_AsDouble(zVal);
+//                if (debug) {
+//                    printf("Working on point [%f, %f, %f]\n", x, y, z);
+//                }
+//                if (x == -1 && PyErr_Occurred()) {
+//                    PyErr_Print();
+//                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
+//                    exit(1);
+//                }
+//                prop->proxyModel[i][0] = x;
+//                prop->proxyModel[i][1] = y;
+//                prop->proxyModel[i][2] = z;
+//                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
+//                i++;
+//            }
+//            if (debug) {
+//                printf("Successfully read the proxy model\n");
+//                printf("Successfully set the proxy model\n");
+//            }
+//            if (debug) {
+//                printf("Successfully populated new properties sructure!\n");
+//                dump_properties(*prop);
+//            }
+//        } else {
+//            Py_DECREF(pFunc);
+//            Py_DECREF(pModule);
+//            PyErr_Print();
+//            fprintf(stderr, "Call failed\n");
+//            exit(1);
 //        }
-        // Call the function (I believe it waits for termination without needing to call Wait(NULL)
-        pValue = PyObject_CallObject(pFunc, pArgs);
-        if (pValue != NULL) {
-            PyObject * pSurfAr, *pVol, *pProx;
-            PyObject * pSize;
-            if (!PyTuple_CheckExact(pValue)) {
-                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
-                exit(1);
-            }
-            if (debug) {
-                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
-            }
-            // Get arguments back and make them usable
-            pSurfAr = PyTuple_GetItem(pValue, 0);
-            pVol = PyTuple_GetItem(pValue, 1);
-            pProx = PyTuple_GetItem(pValue, 2);
-            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
-            if (debug) {
-                printf("Surface Area: %f\n", prop->surfaceArea);
-            }
-            prop->volume = PyFloat_AsDouble(pVol);
-            // The point array might be large, so we need to do some extra work
-            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
-            unsigned long size = PyLong_AsUnsignedLong(pSize);
-            prop->proxyModel = malloc(size * sizeof(double *));
-            for (int i = 0; i < size; i++) {
-                prop->proxyModel[i] = malloc(4 * sizeof(double)); // Each entry is [x,y,z,rad]
-            }
-            if (debug) {
-                printf("Successfully allocated space for proxy model\n");
-            }
-            PyObject * key, *value;
-            PyObject * xVal, *yVal, *zVal;
-            double x, y, z;
-            int i = 0;
-            Py_ssize_t
-            pos = 0;
-            if (debug) {
-                printf("Starting to loop through each element in dictionary\n");
-                printf("The size of the dictionary is: %lo\n", size);
-            }
-            prop->num_points = size;
-            // Retrieves all the points
-            while (PyDict_Next(pProx, &pos, &key, &value)) {
-                xVal = PyTuple_GetItem(key, 0);
-                yVal = PyTuple_GetItem(key, 1);
-                zVal = PyTuple_GetItem(key, 2);
-                x = PyFloat_AsDouble(xVal);
-                y = PyFloat_AsDouble(yVal);
-                z = PyFloat_AsDouble(zVal);
-                if (debug) {
-                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
-                }
-                if (x == -1 && PyErr_Occurred()) {
-                    PyErr_Print();
-                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
-                    exit(1);
-                }
-                prop->proxyModel[i][0] = x;
-                prop->proxyModel[i][1] = y;
-                prop->proxyModel[i][2] = z;
-                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
-                i++;
-            }
-            if (debug) {
-                printf("Successfully read the proxy model\n");
-                printf("Successfully set the proxy model\n");
-            }
-            if (debug) {
-                printf("Successfully populated new properties structure!\n");
-                dump_properties(*prop);
-            }
-        } else {
-            Py_DECREF(pFunc);
-            Py_DECREF(pModule);
-            PyErr_Print();
-            fprintf(stderr, "Call failed\n");
-            exit(1);
-        }
-    } else {
-        if (PyErr_Occurred())
-            PyErr_Print();
-        fprintf(stderr, "Cannot find function \"%s\"\n", "occ_configure");
-    }
-    Py_DECREF(pFunc);
-    return 0;
-}
-
-
-/**
- * The main call to compute the properties of a template that is a SCAD system
- * @param template The given template containing settings etc
- * @param pModule The Python module to connect to
- * @param prop The Properties struct to populate
- * @param debug A flag for debug mode
- * @return 0 for success, 1 for failure
- */
-int runSCADConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
-    PyObject * pFunc, *pValue, *pArgs;
-    pFunc = PyObject_GetAttrString(pModule, "scad_configure");
-    /* pFunc is a new reference */
-
-    if (pFunc && PyCallable_Check(pFunc)) {
-
-        PyObject *pArg1, *pArg2, *pArg3, *pBoundArg;
-        if (template.system != OpenSCAD) {
-            fprintf(stderr, "Tried to run SCAD configure on system %i, which is not SCAD.\n", template.system);
-            exit(1);
-        }
-        if (debug) {
-            printf("Calling a new round of scad configure\n");
-        }
-        pArgs = PyTuple_New(9);
-        // The arguments will be: Sys_eps, alg_eps, and some access to the shape (filename?)
-        pArg1 = PyFloat_FromDouble(template.systemTolerance);
-        pArg2 = PyFloat_FromDouble(template.algorithmPrecision);
-        pArg3 = PyUnicode_DecodeFSDefault(template.model);
-        PyTuple_SetItem(pArgs, 0, pArg1);
-        PyTuple_SetItem(pArgs, 1, pArg2);
-        PyTuple_SetItem(pArgs, 2, pArg3);
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 3; j++) {
-                pBoundArg = PyFloat_FromDouble(template.bounds[i][j]);
-                PyTuple_SetItem(pArgs, 3 + 3 * i + j, pBoundArg);
-            }
-        }
-        pValue = PyTuple_New(3);
-        pValue = PyObject_CallObject(pFunc, pArgs);
-        if (pValue != NULL) {
-            PyObject * pSurfAr, *pVol, *pProx;
-            PyObject * pSize;
-            if (!PyTuple_CheckExact(pValue)) {
-                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
-                exit(1);
-            }
-            if (debug) {
-                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
-            }
-            pSurfAr = PyTuple_GetItem(pValue, 0);
-            pVol = PyTuple_GetItem(pValue, 1);
-            pProx = PyTuple_GetItem(pValue, 2);
-            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
-            if (debug) {
-                printf("Surface Area: %f\n", prop->surfaceArea);
-            }
-            prop->volume = PyFloat_AsDouble(pVol);
-            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
-            unsigned long size = PyLong_AsUnsignedLong(pSize);
-            prop->proxyModel = malloc(size * sizeof(double *));
-            for (int i = 0; i < size; i++) {
-                prop->proxyModel[i] = malloc(4 * sizeof(double));
-            }
-            if (debug) {
-                printf("Successfully allocated space for proxy model\n");
-            }
-            PyObject * key, *value;
-            PyObject * xVal, *yVal, *zVal;
-            double x, y, z;
-            int i = 0;
-            Py_ssize_t
-                    pos = 0;
-            if (debug) {
-                printf("Starting to loop through each element in dictionary\n");
-                printf("The size of the dictionary is: %lo\n", size);
-            }
-            prop->num_points = size;
-            while (PyDict_Next(pProx, &pos, &key, &value)) {
-                xVal = PyTuple_GetItem(key, 0);
-                yVal = PyTuple_GetItem(key, 1);
-                zVal = PyTuple_GetItem(key, 2);
-                x = PyFloat_AsDouble(xVal);
-                y = PyFloat_AsDouble(yVal);
-                z = PyFloat_AsDouble(zVal);
-                if (debug) {
-                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
-                }
-                if (x == -1 && PyErr_Occurred()) {
-                    PyErr_Print();
-                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
-                    exit(1);
-                }
-                prop->proxyModel[i][0] = x;
-                prop->proxyModel[i][1] = y;
-                prop->proxyModel[i][2] = z;
-                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
-                i++;
-            }
-            if (debug) {
-                printf("Successfully read the proxy model\n");
-                printf("Successfully set the proxy model\n");
-            }
-            if (debug) {
-                printf("Successfully populated new properties structure!\n");
-                dump_properties(*prop);
-            }
-
-        } else {
-            Py_DECREF(pFunc);
-            Py_DECREF(pModule);
-            PyErr_Print();
-            fprintf(stderr, "Call failed\n");
-            exit(1);
-        }
-    } else {
-        if (PyErr_Occurred())
-            PyErr_Print();
-        fprintf(stderr, "Cannot find function \"%s\"\n", "scad_configure");
-    }
-    return 0;
-}
-
-
-/**
- * The main call to compute the properties of a template that is a MeshLab system
- * @param template The given template containing settings etc
- * @param pModule The Python module to connect to
- * @param prop The Properties struct to populate
- * @param debug A flag for debug mode
- * @return 0 for success, 1 for failure
- */
-int runMeshLabConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
-    if (debug) {
-        fprintf(stdout, "Starting to run MeshLab Configure.\n");
-    }
-    PyObject * pFunc;
-    pFunc = PyObject_GetAttrString(pModule, "meshlab_configure_cover");
-    /* pFunc is a new reference */
-
-    if (pFunc && PyCallable_Check(pFunc)) {
-        PyObject * pArgs, *pValue, *pArg1, *pArg2, *pArg3, *pBoundArg;
-        if (template.system != MeshLab) {
-            fprintf(stderr, "Tried to run MeshLab configure on system %i, which is not MeshLab.\n", template.system);
-            exit(1);
-        }
-        if (debug) {
-            printf("Calling a new round of MeshLab configure\n");
-        }
-        pArgs = PyTuple_New(9);
-        // The arguments will be: Sys_eps, alg_eps, and some access to the shape (filename?)
-        pArg1 = PyFloat_FromDouble(template.systemTolerance);
-        pArg2 = PyFloat_FromDouble(template.algorithmPrecision);
-        pArg3 = PyUnicode_DecodeFSDefault(template.model);
-        PyTuple_SetItem(pArgs, 0, pArg1);
-        PyTuple_SetItem(pArgs, 1, pArg2);
-        PyTuple_SetItem(pArgs, 2, pArg3);
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 3; j++) {
-                pBoundArg = PyFloat_FromDouble(template.bounds[i][j]);
-                PyTuple_SetItem(pArgs, 3 + 3 * i + j, pBoundArg);
-            }
-        }
-        pValue = PyTuple_New(3);
-        pValue = PyObject_CallObject(pFunc, pArgs);
-        if (pValue != NULL) {
-            PyObject * pSurfAr, *pVol, *pProx;
-            PyObject * pSize;
-            if (!PyTuple_CheckExact(pValue)) {
-                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
-                exit(1);
-            }
-            if (debug) {
-                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
-            }
-            pSurfAr = PyTuple_GetItem(pValue, 0);
-            pVol = PyTuple_GetItem(pValue, 1);
-            pProx = PyTuple_GetItem(pValue, 2);
-            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
-            if (debug) {
-                printf("Surface Area: %f\n", prop->surfaceArea);
-            }
-            prop->volume = PyFloat_AsDouble(pVol);
-            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
-            unsigned long size = PyLong_AsUnsignedLong(pSize);
-            prop->proxyModel = malloc(size * sizeof(double *));
-            for (int i = 0; i < size; i++) {
-                prop->proxyModel[i] = malloc(4 * sizeof(double));
-            }
-            if (debug) {
-                printf("Successfully allocated space for proxy model\n");
-            }
-            PyObject * key, *value;
-            PyObject * xVal, *yVal, *zVal;
-            double x, y, z;
-            int i = 0;
-            Py_ssize_t
-            pos = 0;
-            if (debug) {
-                printf("Starting to loop through each element in dictionary\n");
-                printf("The size of the dictionary is: %lo\n", size);
-            }
-            prop->num_points = size;
-            while (PyDict_Next(pProx, &pos, &key, &value)) {
-                xVal = PyTuple_GetItem(key, 0);
-                yVal = PyTuple_GetItem(key, 1);
-                zVal = PyTuple_GetItem(key, 2);
-                x = PyFloat_AsDouble(xVal);
-                y = PyFloat_AsDouble(yVal);
-                z = PyFloat_AsDouble(zVal);
-                if (debug) {
-                    printf("Working on point [%f, %f, %f]\n", x, y, z);
-                }
-                if (x == -1 && PyErr_Occurred()) {
-                    PyErr_Print();
-                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
-                    exit(1);
-                }
-                prop->proxyModel[i][0] = x;
-                prop->proxyModel[i][1] = y;
-                prop->proxyModel[i][2] = z;
-                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
-                i++;
-            }
-            if (debug) {
-                printf("Successfully read the proxy model\n");
-                printf("Successfully set the proxy model\n");
-            }
-            if (debug) {
-                printf("Successfully populated new properties sructure!\n");
-                dump_properties(*prop);
-            }
-        } else {
-            Py_DECREF(pFunc);
-            Py_DECREF(pModule);
-            PyErr_Print();
-            fprintf(stderr, "Call failed\n");
-            exit(1);
-        }
-    } else {
-        if (PyErr_Occurred())
-            PyErr_Print();
-        fprintf(stderr, "Cannot find function \"%s\"\n", "meshlab_configure");
-    }
-    return 0;
-}
-
-
-/**
- * The main call to compute the properties of a template that is a Rhino system
- * @param template The given template containing settings etc
- * @param pModule The Python module to connect to
- * @param prop The Properties struct to populate
- * @param debug A flag for debug mode
- * @return 0 for success, 1 for failure
- */
-int runRhinoConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
-    // For now, this only assumes that the given filename is a cover and does not do complex calculations
-    PyObject * pFunc;
-    pFunc = PyObject_GetAttrString(pModule, "rhino_configure");
-    /* pFunc is a new reference */
-
-    if (pFunc && PyCallable_Check(pFunc)) {
-
-        PyObject * pArgs, *pValue, *pArg1, *pArg2, *pArg3;
-        if (template.system != Rhino) {
-            fprintf(stderr, "Tried to run rhino configure on system %i, which is not Rhino.\n", template.system);
-            exit(1);
-        }
-        if (debug) {
-            printf("Calling a new round of rhino configure\n");
-        }
-        pArgs = PyTuple_New(3);
-        // The arguments will be: Sys_eps, alg_eps, and some access to the shape (filename?)
-        pArg1 = PyFloat_FromDouble(template.systemTolerance);
-        pArg2 = PyFloat_FromDouble(template.algorithmPrecision);
-        pArg3 = PyUnicode_DecodeFSDefault(template.model);
-        PyTuple_SetItem(pArgs, 0, pArg1);
-        PyTuple_SetItem(pArgs, 1, pArg2);
-        PyTuple_SetItem(pArgs, 2, pArg3);
-
-        pValue = PyTuple_New(3);
-        pValue = PyObject_CallObject(pFunc, pArgs);
-        if (pValue != NULL) {
-            PyObject * pSurfAr, *pVol, *pProx;
-            PyObject * pSize;
-            if (!PyTuple_CheckExact(pValue)) {
-                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
-                exit(1);
-            }
-            if (debug) {
-                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
-            }
-            pSurfAr = PyTuple_GetItem(pValue, 0);
-            pVol = PyTuple_GetItem(pValue, 1);
-            pProx = PyTuple_GetItem(pValue, 2);
-            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
-            if (debug) {
-                printf("Surface Area: %f\n", prop->surfaceArea);
-            }
-            prop->volume = PyFloat_AsDouble(pVol);
-            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
-            unsigned long size = PyLong_AsUnsignedLong(pSize);
-            prop->proxyModel = malloc(size * sizeof(double *));
-            for (int i = 0; i < size; i++) {
-                prop->proxyModel[i] = malloc(4 * sizeof(double));
-            }
-            if (debug) {
-                printf("Successfully allocated space for proxy model\n");
-            }
-            PyObject * key, *value;
-            PyObject * xVal, *yVal, *zVal;
-            double x, y, z;
-            int i = 0;
-            Py_ssize_t
-            pos = 0;
-            if (debug) {
-                printf("Starting to loop through each element in dictionary\n");
-                printf("The size of the dictionary is: %lo\n", size);
-            }
-            prop->num_points = size;
-            while (PyDict_Next(pProx, &pos, &key, &value)) {
-                xVal = PyTuple_GetItem(key, 0);
-                yVal = PyTuple_GetItem(key, 1);
-                zVal = PyTuple_GetItem(key, 2);
-                x = PyFloat_AsDouble(xVal);
-                y = PyFloat_AsDouble(yVal);
-                z = PyFloat_AsDouble(zVal);
-                if (debug) {
-                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
-                }
-                if (x == -1 && PyErr_Occurred()) {
-                    PyErr_Print();
-                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
-                    exit(1);
-                }
-                prop->proxyModel[i][0] = x;
-                prop->proxyModel[i][1] = y;
-                prop->proxyModel[i][2] = z;
-                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
-                i++;
-            }
-            if (debug) {
-                printf("Successfully read the proxy model\n");
-                printf("Successfully set the proxy model\n");
-            }
-            if (debug) {
-                printf("Successfully populated new properties structure!\n");
-                dump_properties(*prop);
-            }
-        } else {
-            Py_DECREF(pFunc);
-            Py_DECREF(pModule);
-            PyErr_Print();
-            fprintf(stderr, "Call failed\n");
-            exit(1);
-        }
-    } else {
-        if (PyErr_Occurred())
-            PyErr_Print();
-        fprintf(stderr, "Cannot find function \"%s\"\n", "rhino_configure");
-    }
-    Py_DECREF(pFunc);
-    return 0;
-
-}
+//    } else {
+//        if (PyErr_Occurred())
+//            PyErr_Print();
+//        fprintf(stderr, "Cannot find function \"%s\"\n", "meshlab_configure");
+//    }
+//    return 0;
+//}
+//
+//
+///**
+// * The main call to compute the properties of a template that is a Rhino system
+// * @param template The given template containing settings etc
+// * @param pModule The Python module to connect to
+// * @param prop The Properties struct to populate
+// * @param debug A flag for debug mode
+// * @return 0 for success, 1 for failure
+// */
+//int runRhinoConfigure(Template template, PyObject *pModule, Properties *prop, int debug) {
+//    // For now, this only assumes that the given filename is a cover and does not do complex calculations
+//    PyObject * pFunc;
+//    pFunc = PyObject_GetAttrString(pModule, "rhino_configure");
+//    /* pFunc is a new reference */
+//
+//    if (pFunc && PyCallable_Check(pFunc)) {
+//
+//        PyObject * pArgs, *pValue, *pArg1, *pArg2, *pArg3;
+//        if (template.system != Rhino) {
+//            fprintf(stderr, "Tried to run rhino configure on system %i, which is not Rhino.\n", template.system);
+//            exit(1);
+//        }
+//        if (debug) {
+//            printf("Calling a new round of rhino configure\n");
+//        }
+//        pArgs = PyTuple_New(3);
+//        // The arguments will be: Sys_eps, alg_eps, and some access to the shape (filename?)
+//        pArg1 = PyFloat_FromDouble(template.systemTolerance);
+//        pArg2 = PyFloat_FromDouble(template.algorithmPrecision);
+//        pArg3 = PyUnicode_DecodeFSDefault(template.model);
+//        PyTuple_SetItem(pArgs, 0, pArg1);
+//        PyTuple_SetItem(pArgs, 1, pArg2);
+//        PyTuple_SetItem(pArgs, 2, pArg3);
+//
+//        pValue = PyTuple_New(3);
+//        pValue = PyObject_CallObject(pFunc, pArgs);
+//        if (pValue != NULL) {
+//            PyObject * pSurfAr, *pVol, *pProx;
+//            PyObject * pSize;
+//            if (!PyTuple_CheckExact(pValue)) {
+//                fprintf(stderr, "Did not receive a tuple from function call, exiting.\n");
+//                exit(1);
+//            }
+//            if (debug) {
+//                printf("The length of the tuple: %lo\n", PyTuple_Size(pValue));
+//            }
+//            pSurfAr = PyTuple_GetItem(pValue, 0);
+//            pVol = PyTuple_GetItem(pValue, 1);
+//            pProx = PyTuple_GetItem(pValue, 2);
+//            prop->surfaceArea = PyFloat_AsDouble(pSurfAr);
+//            if (debug) {
+//                printf("Surface Area: %f\n", prop->surfaceArea);
+//            }
+//            prop->volume = PyFloat_AsDouble(pVol);
+//            pSize = PyLong_FromSsize_t(PyDict_Size(pProx));
+//            unsigned long size = PyLong_AsUnsignedLong(pSize);
+//            prop->proxyModel = malloc(size * sizeof(double *));
+//            for (int i = 0; i < size; i++) {
+//                prop->proxyModel[i] = malloc(4 * sizeof(double));
+//            }
+//            if (debug) {
+//                printf("Successfully allocated space for proxy model\n");
+//            }
+//            PyObject * key, *value;
+//            PyObject * xVal, *yVal, *zVal;
+//            double x, y, z;
+//            int i = 0;
+//            Py_ssize_t
+//            pos = 0;
+//            if (debug) {
+//                printf("Starting to loop through each element in dictionary\n");
+//                printf("The size of the dictionary is: %lo\n", size);
+//            }
+//            prop->num_points = size;
+//            while (PyDict_Next(pProx, &pos, &key, &value)) {
+//                xVal = PyTuple_GetItem(key, 0);
+//                yVal = PyTuple_GetItem(key, 1);
+//                zVal = PyTuple_GetItem(key, 2);
+//                x = PyFloat_AsDouble(xVal);
+//                y = PyFloat_AsDouble(yVal);
+//                z = PyFloat_AsDouble(zVal);
+//                if (debug) {
+//                    printf("Working on point [%f, %f, %f], the value is: %f\n", x, y, z, PyFloat_AsDouble(value));
+//                }
+//                if (x == -1 && PyErr_Occurred()) {
+//                    PyErr_Print();
+//                    fprintf(stderr, "Failed to read value %i in the proxy model.\n", i);
+//                    exit(1);
+//                }
+//                prop->proxyModel[i][0] = x;
+//                prop->proxyModel[i][1] = y;
+//                prop->proxyModel[i][2] = z;
+//                prop->proxyModel[i][3] = PyFloat_AsDouble(value);
+//                i++;
+//            }
+//            if (debug) {
+//                printf("Successfully read the proxy model\n");
+//                printf("Successfully set the proxy model\n");
+//            }
+//            if (debug) {
+//                printf("Successfully populated new properties structure!\n");
+//                dump_properties(*prop);
+//            }
+//        } else {
+//            Py_DECREF(pFunc);
+//            Py_DECREF(pModule);
+//            PyErr_Print();
+//            fprintf(stderr, "Call failed\n");
+//            exit(1);
+//        }
+//    } else {
+//        if (PyErr_Occurred())
+//            PyErr_Print();
+//        fprintf(stderr, "Cannot find function \"%s\"\n", "rhino_configure");
+//    }
+//    Py_DECREF(pFunc);
+//    return 0;
+//
+//}
 
 /**
  * The wrapper function for the configure phase

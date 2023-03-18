@@ -1,3 +1,1 @@
-C:\Users\kisac\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\202.6397.106\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\DTest.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe cr CMakeFiles\DTest.dir/objects.a @CMakeFiles\DTest.dir\objects1.rsp
-C:\msys64\mingw64\bin\gcc.exe  -DNDEBUG -g -fwrapv -O3 -Wall   -Xlinker -export-dynamic -Wl,--whole-archive CMakeFiles\DTest.dir/objects.a -Wl,--no-whole-archive  -o DTest.exe -Wl,--out-implib,libDTest.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\DTest.dir\linklibs.rsp
+/usr/bin/cc  -DNDEBUG -g -fwrapv -O3 -Wall -g  -Xlinker -export-dynamic CMakeFiles/DTest.dir/DTest.c.o -o DTest  -lC:/Users/kisac/anaconda3/envs/py37/libs/python37.lib 

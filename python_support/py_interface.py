@@ -37,7 +37,8 @@ def occ_configure(alg_tol, model):
     rad_dict, ins, ons = run_pmc.parse_cover(arr1)
     volume, surface_area = pmc.volume(rad_dict)
     # print(rad_dict)
-    return float(surface_area), float(volume), rad_dict, ins
+    return float(surface_area), float(volume), rad_dict, ins, Constants.x_min, Constants.y_min, Constants.z_min, \
+           Constants.x_max, Constants.y_max, Constants.z_max
 
 
 def rhino_configure(sys_tol, alg_tol, point_file):
@@ -57,7 +58,8 @@ def sw_configure(alg_tol, model):
     import run_pmc
     # print(rad_dict)
     volume, surface_area = run_pmc.setup.volume(rad_dict)
-    return float(surface_area), float(volume), rad_dict, ins
+    return float(surface_area), float(volume), rad_dict, ins, Constants.x_min, Constants.y_min, Constants.z_min, \
+           Constants.x_max, Constants.y_max, Constants.z_max
 
 
 def inv_configure(alg_tol, model):
@@ -69,7 +71,8 @@ def inv_configure(alg_tol, model):
     import run_pmc
     # print(rad_dict)
     volume, surface_area = run_pmc.setup.volume(rad_dict)
-    return float(surface_area), float(volume), rad_dict, ins
+    return float(surface_area), float(volume), rad_dict, ins, Constants.x_min, Constants.y_min, Constants.z_min, \
+           Constants.x_max, Constants.y_max, Constants.z_max
 
 
 def read_shared_cover(filename, rad):
