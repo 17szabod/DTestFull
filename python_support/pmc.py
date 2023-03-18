@@ -38,10 +38,10 @@ def volume(rad_dict):
     import paramiko
     from scp import SCPClient
     # Declare credentials
-    # TODO: Don't hard code my password! Duygu if you see this just pretend you didn't :)
-    host = '10.141.249.247'  # dynamic
-    username = 'daniel'
-    password = 'almabolt3'
+    # TODO: Fill in this part to connect to a system that can run sbl
+    host = 'HOST IP HERE'  # dynamic
+    username = 'USERNAME HERE'
+    password = 'PASSWORD HERE'
 
     # 1. Connect
     con = paramiko.SSHClient()
@@ -71,6 +71,21 @@ def volume(rad_dict):
     area = tree.getroot()[4].text
     print("Returning! Volume: {0}, Area: {1}".format(volume, area))
     return volume, area
+
+
+# computes the persistence information
+# Returns: Betti numbers and persistence intervals for bottleneck distance calculation
+def persistence(rad_dict):
+    points = list([list(p) for p in rad_dict.keys()])  # convert from tuples to lists
+    rips_complex = gudhi.RipsComplex(points=points,
+                                     max_edge_length=60.0)
+    simplex_tree = rips_complex.create_simplex_tree(max_dimension=3)
+    return simplex_tree.betti_numbers(), simplex_tree.persistence_intervals_in_dimension(1)
+
+
+# Computes the bottleneck distance between two given persistence arrays
+def bottleneck(persistence1, persistence2):
+    return gudhi.bottleneck_distance(persistence1, persistence2, 0.1)
 
 
 # Finds the volume centroid of the union of balls defined by rad_dict - requires uniform radii
