@@ -25,6 +25,7 @@ External Libraries: Structural Bioinformatics Library (https://sbl.inria.fr/)- *
    - `conda install -c conda-forge pythonocc-core=7.6.2`
    
 4. Change paths in CMakeLists.txt and DTest.c to your venv's python installation
+5. Install the CAD software (e.g. OpenCascade) with all of its dependencies. 
 
 
 ## Usage
