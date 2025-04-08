@@ -27,6 +27,7 @@ External Libraries: Structural Bioinformatics Library (https://sbl.inria.fr/)
    - You will need to link to the Python library and executables, as well as adding these directories to the search path.
 
 5. To install SBL, a UNIX OS is currently required. This makes installation on Windows difficult, but can be worked around either by setting up a remote connection to a UNIX compatible machine, or setting up a local VM that can run SBL. In either case, changes will need to be made to pmc.volume to be able to access whatever sbl installation you use.
+6. Install the CAD software (e.g. AutoDesk Inventor and SolidWorks) with all its dependencies.
 
 
 ## References
