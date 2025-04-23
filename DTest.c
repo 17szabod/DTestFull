@@ -26,14 +26,14 @@
 #define HOSTNAME "localhost"
 
 // Local python system locations - CHANGE THESE TO INSTALL
-#define PY_LIB "C:/Users/kisac/anaconda3/envs/py37/Lib"
-//#define PY_LIB_DYNLOAD "C:/Users/kisac/anaconda3/envs/py37/lib/python3.7/lib-dynload"
-#define PY_PACKAGES "C:/Users/kisac/anaconda3/envs/py37/Lib/site-packages"
-#define PY_HOME_BINARIES "C:/Users/kisac/anaconda3/envs/py37/Library"
-#define PY_EXECUTABLE "C:/Users/kisac/anaconda3/envs/py37/python"
+#define PY_LIB "C:/Users/danis/anaconda3/envs/py37/Lib"
+//#define PY_LIB_DYNLOAD "C:/Users/danis/anaconda3/envs/py37/lib/python3.7/lib-dynload"
+#define PY_PACKAGES "C:/Users/danis/anaconda3/envs/py37/Lib/site-packages"
+#define PY_HOME_BINARIES "C:/Users/danis/anaconda3/envs/py37/Library"
+#define PY_EXECUTABLE "C:/Users/danis/anaconda3/envs/py37/python"
 // This is only necessary if your python code is in a different directory, otherwise set it to the python_support
 // directory or comment out wherever it is used
-#define PY_LOCATION "C:/Users/kisac/CLionProjects/DTestFull/python_support"
+#define PY_LOCATION "C:/Users/danis/Coding/DTestFull/python_support"
 
 /**
  * Enumerator for supported system types
@@ -1316,7 +1316,7 @@ int main(int argc, char *argv[]) {
     char *endptr;
     float alg_tol = strtof(argv[6], &endptr);
     float tol = strtof(argv[7], &endptr);
-    int debug = FALSE;
+    int debug = TRUE;
     if (*endptr != '\0') {
         fprintf(stderr, "Failed to read tolerance, only got %f\n", tol);
         exit(1);

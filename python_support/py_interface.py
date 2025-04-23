@@ -51,8 +51,8 @@ def rhino_configure(sys_tol, alg_tol, point_file):
 def sw_configure(alg_tol, model):
     import Constants
     print("Beginning SolidWorks configure.")
-    os.system('\"C:\\Users\\kisac\\CLionProjects\\DTestFull\\SolidWorks_support\\ConsoleApplication1\\ConsoleApplication1\\bin\\Debug\\SW_PMC_Grid.exe\" {0} {1} {2}'.format(model, Constants.DENSITY, alg_tol if alg_tol != -1 else ""))
-    point_file = "C:\\Users\\kisac\\CLionProjects\\DTestFull\\temp_SW_spheres.txt"
+    os.system('\"C:\\Users\\danis\\Coding\\DTestFull\\SolidWorks_support\\ConsoleApplication1\\ConsoleApplication1\\bin\\Debug\\SW_PMC_Grid.exe\" {0} {1} {2}'.format(model, Constants.DENSITY, alg_tol if alg_tol != -1 else ""))
+    point_file = "C:\\Users\\danis\\Coding\\DTestFull\\temp_SW_spheres.txt"
     rad_dict, ins, ons = read_shared_cover(point_file, alg_tol)
     import run_pmc
     # print(rad_dict)
@@ -63,8 +63,8 @@ def sw_configure(alg_tol, model):
 def inv_configure(alg_tol, model):
     import Constants
     print("Beginning Inventor configure.")
-    os.system('\"C:\\Users\\kisac\\CLionProjects\\DTestFull\\Inventor_support\\Inventor_PMC\\Inventor_PMC\\bin\\Debug\\Inventor_PMC.exe\" {0} {1} {2}'.format(model, Constants.DENSITY, alg_tol if alg_tol != -1 else ""))
-    point_file = "C:\\Users\\kisac\\CLionProjects\\DTestFull\\temp_Inv_spheres.txt"
+    os.system('\"C:\\Users\\danis\\Coding\\DTestFull\\Inventor_support\\Inventor_PMC\\Inventor_PMC\\bin\\Debug\\Inventor_PMC.exe\" {0} {1} {2}'.format(model, Constants.DENSITY, alg_tol if alg_tol != -1 else ""))
+    point_file = "C:\\Users\\danis\\Coding\\DTestFull\\temp_Inv_spheres.txt"
     rad_dict, ins, ons = read_shared_cover(point_file, alg_tol)
     import run_pmc
     # print(rad_dict)

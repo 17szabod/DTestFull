@@ -174,7 +174,7 @@ namespace SW_PMC_Grid
             swApp.ExitApp();
 
             // Write pmc results to a shared file
-            System.IO.File.WriteAllText(@"C:\Users\kisac\CLionProjects\DTestFull\temp_SW_spheres.txt", out_string.Substring(1));
+            System.IO.File.WriteAllText(@"C:\Users\danis\Coding\DTestFull\temp_SW_spheres.txt", out_string.Substring(1));
 
             return;
         }
