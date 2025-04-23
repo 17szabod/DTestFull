@@ -7,9 +7,9 @@ DTest is an algorithmic framework to test for the interoperability of two distin
 
 pip packages: numpy, scipy, sympy, xml, argparse, multiprocessing, gudhi
 
-Conda packages: pythonocc (https://github.com/tpaviot/pythonocc-core)- *pythonocc is only available as a conda package, and requires an opencascade installation*
+Conda packages: pythonocc (https://github.com/tpaviot/pythonocc-core)- *pythonocc is only available as a conda package, and requires an OpenCascade installation*
 
-External Libraries: Structural Bioinformatics Library (https://sbl.inria.fr/)- *As of 09-24-22, SBL is only available on unix systems*
+External Libraries: Structural Bioinformatics Library (https://sbl.inria.fr/)- *As of 09-24-22, SBL is only available on Unix systems*
 
 ### To install:
 
@@ -30,7 +30,7 @@ External Libraries: Structural Bioinformatics Library (https://sbl.inria.fr/)- *
 
 ## Usage
 
-There are two levels of automation available. Some CAD software, such as Rhino, needs the template file (which contains the query outputs, among other things) to be generated within the software itself- this may be automated within the given system itself. The other systems, such as OpenCASCADE, Inventor, Solidworks, and OpenSCAD, can be run directly in an automated sense, but this is only available in the WindowsVersion branch. 
+There are two levels of automation available. Some CAD software, such as Rhino, needs the template file (which contains the query outputs, among the additional components listed in our article) to be generated within the software itself. This step may be automated within the given system itself. The other systems, such as OpenCASCADE, Inventor, Solidworks, and OpenSCAD, can be run directly in an automated manner, however, this is currently only available in the WindowsVersion branch. 
 
 The main executable is DTest.c. After compilation, use the following command to run the semiautomated version:
 
