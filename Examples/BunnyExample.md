@@ -1,0 +1,3 @@
+In this file we describe how the installed version might be used to test for interoperability of the Stanford bunny in Solidworks and Inventor. This file is originally a mesh, so we imported a version where it is treated as a smooth solid, and saved it to data/bunny.ipt and data/bunny.SLDPRT. To construct the point clouds, over approximately a 10x10x10 grid, run the following command:
+`./DTest 4 5 C:/Users/danis/Coding/DTestfull/data/bunny.SLDPRT C:/Users/danis/Coding/DTestfull/data/bunny.ipt bunny_test 7.2 10`
+It will save the point files as temp_SW_spheres.txt and temp_Inv_spheres.txt, with the points separated by ~ and pmc result by $, with -1 for out, 0 for on, 1 for in. If you have a nice SBL connection set up, it will output the results to the bunny_test file.

@@ -1,0 +1,12 @@
+Running test bunny_test on model 1 C:/Users/danis/Coding/DTestfull/data/bunny.SLDPRT and model 2 C:/Users/danis/Coding/DTestfull/data/bunny.SLDPRT with tolerance 7.200000:
+
+Volume:
+Systems SolidWorks and Inventor have compatible volumes with a difference of -254.249421
+Volume of first proxy model: 128914.2653112, volume of second proxy model: 129168.5147322
+
+Surface Area:
+Systems SolidWorks and Inventor have incompatible areas with a difference of -141.643948
+Surface area of first proxy model: 18821.18059348, Surface area of second proxy model: 18962.82454171
+
+Hausdorff Distance:
+Systems SolidWorks and Inventor have a compatible Hausdorff Distance of 0.05635170

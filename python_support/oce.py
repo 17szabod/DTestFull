@@ -1,17 +1,20 @@
+# import ctypes
+# ctypes.CDLL(r"C:\Users\danis\anaconda3\envs\py37\Lib\site-packages\OCC\Core\TKMath.dll")
+
 from OCC.Core import gp
 from OCC.Core import Precision
-from OCC.Core import TopTools
-from OCC.Core import GeomAbs
-from OCC.Core import BOPAlgo
+# from OCC.Core import TopTools
+# from OCC.Core import GeomAbs
+# from OCC.Core import BOPAlgo
 # from OCC.Core import BOPCol
 from OCC.Core import Bnd
 from OCC.Core import BRepBuilderAPI
-from OCC.Core import BRepAlgoAPI
+# from OCC.Core import BRepAlgoAPI
 from OCC.Core import BRepExtrema
-from OCC.Core import BRepPrimAPI
-from OCC.Core import BRepOffsetAPI
+# from OCC.Core import BRepPrimAPI
+# from OCC.Core import BRepOffsetAPI
 from OCC.Core import TopExp
-from OCC.Core import BRep
+# from OCC.Core import BRep
 from OCC.Core import BRepBndLib
 from OCC.Core import TopAbs
 from OCC.Core import TopoDS
@@ -20,7 +23,7 @@ from OCC.Core import BRepAdaptor
 from OCC.Core import BRepClass3d
 from OCC.Core import BRepGProp
 from OCC.Core import GProp
-import sys
+# import sys
 # import oce_distance
 
 global SYS_EPS

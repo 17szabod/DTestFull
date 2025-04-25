@@ -1052,8 +1052,8 @@ int startConfigureScript(Properties *props[2], Template template1, Template temp
         PyObject * pName, *pModule;
         size_t stringsize;
         char py_paths[2048];
-        snprintf(py_paths, sizeof py_paths, "%s%s%s%s%s%s%s%s%s%s%s", PY_LIB, ";", PY_PACKAGES, ";", "C:\\Users\\kisac\\anaconda3\\envs\\py37\\Library\\bin",
-                 ";", "C:/Users/kisac/anaconda3/envs/py37", ";", "C:/Users/kisac/anaconda3/envs/py37/DLLs", ";", "C:/Users/kisac/anaconda3/envs/py37/site-packages/OCC/Core");
+        snprintf(py_paths, sizeof py_paths, "%s%s%s%s%s%s%s%s%s%s%s%s%s", PY_LIB, ";", PY_PACKAGES, ";", "C:/Users/danis/anaconda3/envs/py37/Library/bin",
+                 ";", "C:/Users/danis/anaconda3/envs/py37", ";", "C:/Users/danis/anaconda3/envs/py37/DLLs", ";", "C:/Users/danis/anaconda3/envs/py37/site-packages/OCC/Core", ";", "C:/OpenCASCADE-7.4.0-vc14-64/opencascade-7.4.0/win64/vc14/bin");
         // Forcibly sets the path to include all Python Libraries- would need to be changed on another system
         Py_SetPath(Py_DecodeLocale(py_paths, &stringsize));
         Py_Initialize();

@@ -30,3 +30,11 @@ C:\Users\kisac\CLionProjects\DTestFull\SolidWorks_Support\ConsoleApplication1\Co
 C:\Users\kisac\CLionProjects\DTestFull\SolidWorks_Support\ConsoleApplication1\ConsoleApplication1\bin\Debug\SW_PMC_Grid.exe
 C:\Users\kisac\CLionProjects\DTestFull\SolidWorks_Support\ConsoleApplication1\ConsoleApplication1\bin\Debug\SW_PMC_Grid.pdb
 C:\Users\kisac\CLionProjects\DTestFull\SolidWorks_Support\ConsoleApplication1\ConsoleApplication1\obj\Debug\SW_PMC_Grid.csprojResolveAssemblyReference.cache
+C:\Users\danis\Coding\DTestFull\SolidWorks_Support\ConsoleApplication1\ConsoleApplication1\bin\Debug\SW_PMC_Grid.exe.config
+C:\Users\danis\Coding\DTestFull\SolidWorks_Support\ConsoleApplication1\ConsoleApplication1\bin\Debug\SW_PMC_Grid.exe
+C:\Users\danis\Coding\DTestFull\SolidWorks_Support\ConsoleApplication1\ConsoleApplication1\bin\Debug\SW_PMC_Grid.pdb
+C:\Users\danis\Coding\DTestFull\SolidWorks_Support\ConsoleApplication1\ConsoleApplication1\obj\Debug\SW_PMC_Grid.csproj.AssemblyReference.cache
+C:\Users\danis\Coding\DTestFull\SolidWorks_Support\ConsoleApplication1\ConsoleApplication1\obj\Debug\SW_PMC_Grid.csproj.ResolveComReference.cache
+C:\Users\danis\Coding\DTestFull\SolidWorks_Support\ConsoleApplication1\ConsoleApplication1\obj\Debug\SW_PMC_Grid.csproj.CoreCompileInputs.cache
+C:\Users\danis\Coding\DTestFull\SolidWorks_Support\ConsoleApplication1\ConsoleApplication1\obj\Debug\SW_PMC_Grid.exe
+C:\Users\danis\Coding\DTestFull\SolidWorks_Support\ConsoleApplication1\ConsoleApplication1\obj\Debug\SW_PMC_Grid.pdb

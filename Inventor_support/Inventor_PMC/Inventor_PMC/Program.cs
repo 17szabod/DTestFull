@@ -116,7 +116,7 @@ namespace Inventor_PMC
             }
 
             // Write pmc results to a shared file
-            System.IO.File.WriteAllText(@"C:\Users\kisac\CLionProjects\DTestFull\temp_Inv_spheres.txt", out_string.Substring(1));
+            System.IO.File.WriteAllText(@"C:\Users\danis\Coding\DTestFull\temp_Inv_spheres.txt", out_string.Substring(1));
 
             return;
         }

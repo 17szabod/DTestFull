@@ -10,3 +10,10 @@ C:\Users\kisac\CLionProjects\DTestFull\Inventor_support\Inventor_PMC\Inventor_PM
 C:\Users\kisac\CLionProjects\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\bin\Debug\Inventor_PMC.exe
 C:\Users\kisac\CLionProjects\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\bin\Debug\Inventor_PMC.pdb
 C:\Users\kisac\CLionProjects\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\obj\Debug\Inventor_PMC.csprojResolveAssemblyReference.cache
+C:\Users\danis\Coding\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\bin\Debug\Inventor_PMC.exe.config
+C:\Users\danis\Coding\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\bin\Debug\Inventor_PMC.exe
+C:\Users\danis\Coding\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\bin\Debug\Inventor_PMC.pdb
+C:\Users\danis\Coding\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\obj\Debug\Inventor_PMC.csproj.AssemblyReference.cache
+C:\Users\danis\Coding\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\obj\Debug\Inventor_PMC.csproj.CoreCompileInputs.cache
+C:\Users\danis\Coding\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\obj\Debug\Inventor_PMC.exe
+C:\Users\danis\Coding\DTestFull\Inventor_support\Inventor_PMC\Inventor_PMC\obj\Debug\Inventor_PMC.pdb

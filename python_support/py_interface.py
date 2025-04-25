@@ -50,9 +50,10 @@ def rhino_configure(sys_tol, alg_tol, point_file):
 
 def sw_configure(alg_tol, model):
     import Constants
-    print("Beginning SolidWorks configure.")
+    print("Beginning SolidWorks configure with arguments {0} {1} {2}.".format(model, Constants.DENSITY, alg_tol if alg_tol != -1 else ""))
     os.system('\"C:\\Users\\danis\\Coding\\DTestFull\\SolidWorks_support\\ConsoleApplication1\\ConsoleApplication1\\bin\\Debug\\SW_PMC_Grid.exe\" {0} {1} {2}'.format(model, Constants.DENSITY, alg_tol if alg_tol != -1 else ""))
     point_file = "C:\\Users\\danis\\Coding\\DTestFull\\temp_SW_spheres.txt"
+    print("Successful point cloud generation from Solidworks!")
     rad_dict, ins, ons = read_shared_cover(point_file, alg_tol)
     import run_pmc
     # print(rad_dict)

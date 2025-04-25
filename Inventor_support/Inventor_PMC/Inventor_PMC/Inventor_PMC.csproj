@@ -36,6 +36,9 @@
   <PropertyGroup>
     <StartupObject>Inventor_PMC.DisplayCloud</StartupObject>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Run|AnyCPU'">
+    <OutputPath>bin\Run\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autodesk.Inventor.Interop, Version=25.0.0.0, Culture=neutral, PublicKeyToken=d84147f8b4276564, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
