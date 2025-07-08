@@ -59,6 +59,9 @@ Once installed, we need simply need to run DTest.exe. Usage:
 `./DTest <System1> <System2> <Model1> <Model2> <TestName> <Cover Parameter> <Algorithm Precision>`
 For systems, use Rhino = 0, OpenCascade = 1, OpenSCAD = 2, MeshLab = 3, SolidWorks = 4, Inventor = 5 (Rhino, OpenSCAD and MeshLab are WIPs for Windows), and algorithm precision should be in mm. The cover parameter is allowed to be entered manually, but a first run with whatever cover parameter will give a suggestion as to what cover parameter to use for the model.
 ### Stanford Bunny Test
+Volume (in mm3) = 128819.51 
+Surface area (in mm2) = 17668.90  
+Center of mass: (in mm) (-2.27, -6.88, 29.96)
 
 ## References
 
