@@ -55,7 +55,9 @@ Certain aspects of this code have not been optimized yet, for example there are 
 
 ### Example usage
 
-Once installed, we need simply need to run DTest.exe. Usage:
+Once installed, we need simply need to run DTest.exe. 
+
+Usage:
 `./DTest <System1> <System2> <Model1> <Model2> <TestName> <Cover Parameter> <Algorithm Precision>`
 For systems, use Rhino = 0, OpenCascade = 1, OpenSCAD = 2, MeshLab = 3, SolidWorks = 4, Inventor = 5 (Rhino, OpenSCAD and MeshLab are WIPs for Windows), and algorithm precision should be in mm. The cover parameter is allowed to be entered manually, but a first run with whatever cover parameter will give a suggestion as to what cover parameter to use for the model.
 ### Stanford Bunny Test
