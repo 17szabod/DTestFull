@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace Inventor_PMC
         {
             int density = int.Parse(args[1]);
             string filename = args[0];
-            double pmc_param = double.Parse(args[2]);
+            double pmc_param = double.Parse(args[2], CultureInfo.InvariantCulture);
             double sys_eps = 1e-5;
             Console.WriteLine($"Running Inventor PMC with parameters pmc_param: {pmc_param}, density: {density}");
             Application _invApp;

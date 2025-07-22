@@ -51,7 +51,7 @@ namespace Inventor_PMC
                 int pmc = int.Parse(tmp[0]);
                 double[] parr = Array.ConvertAll(tmp[1].Substring(1, tmp[1].Length - 2).Replace(" ", "").Split(','), Double.Parse);
                 Point p = _invApp.TransientGeometry.CreatePoint(parr[0]/10, parr[1]/10, parr[2]/10);
-                //Console.WriteLine($"Working on point ({tmp[0]}, {tmp[1]}), out count is {outsketch.SketchPoints3D.Count}");
+                Console.WriteLine($"Working on point ({tmp[0]}, {tmp[1]}), out count is {outsketch.SketchPoints3D.Count}");
                 if (pmc == 1)
                 {
                     insketch.SketchPoints3D.Add(p);
@@ -76,44 +76,45 @@ namespace Inventor_PMC
             _invApp.ActiveDocument.Update();
             return;
         }
-        public void DrawPointCloud(PartComponentDefinition compDef, Application _invApp)
-        {
+        //public void DrawPointCloud(PartComponentDefinition compDef, Application _invApp)
+        //{
 
-            // Delete any previous graphics with same ID
-            try
-            {
-                compDef.ClientGraphicsCollection["PointCloud"].Delete();
-            }
-            catch { }
+        //    // Delete any previous graphics with same ID
+        //    try
+        //    {
+        //        compDef.ClientGraphicsCollection["PointCloud"].Delete();
+        //    }
+        //    catch { }
 
-            ClientGraphics clientGraphics = compDef.ClientGraphicsCollection.Add("PointCloud");
-            GraphicsNode graphicsNode = clientGraphics.AddNode(1);
+        //    ClientGraphics clientGraphics = compDef.ClientGraphicsCollection.Add("PointCloud");
+        //    GraphicsNode graphicsNode = clientGraphics.AddNode(1);
 
-            // Create the coordinate set
-            GraphicsCoordinateSet coordSet = compDef.GraphicsDataSetsCollection.CreateCoordinateSet("PointCloudCoords"); 
-            //clientGraphics.CoordinateSets.Add(1);
+        //    // Create the coordinate set
+        //    GraphicsCoordinateSet coordSet = compDef.GraphicsDataSetsCollection.CreateCoordinateSet("PointCloudCoords"); 
+        //    //clientGraphics.CoordinateSets.Add(1);
 
-            //GraphicsDataSets dataSets = compDef.GraphicsDataSetsCollection;
-            GraphicsDataSetCoordinateSet coordSet = dataSets.CreateCoordinateSet("PointCoords");
+        //    //GraphicsDataSets dataSets = compDef.GraphicsDataSetsCollection;
+        //    GraphicsDataSetCoordinateSet coordSet = dataSets.CreateCoordinateSet("PointCoords");
 
 
-            // Fill in your point cloud here (this is just example data)
-            int pointCount = 1000;
-            double[] coords = new double[pointCount * 3];
+        //    // Fill in your point cloud here (this is just example data)
+        //    int pointCount = 1000;
+        //    double[] coords = new double[pointCount * 3];
 
-            for (int i = 0; i < pointCount; i++)
-            {
-                coords[3 * i] = i * 0.01;      // X
-                coords[3 * i + 1] = 0;         // Y
-                coords[3 * i + 2] = 0;         // Z
-            }
+        //    for (int i = 0; i < pointCount; i++)
+        //    {
+        //        coords[3 * i] = i * 0.01;      // X
+        //        coords[3 * i + 1] = 0;         // Y
+        //        coords[3 * i + 2] = 0;         // Z
+        //    }
 
-            coordSet.PutCoordinates(ref coords);
+        //    coordSet.PutCoordinates(ref coords);
 
-            // Add the point graphics
-            PointGraphics pointGraphics = graphicsNode.AddPointGraphics();
-            pointGraphics.CoordinateSet = coordSet;
-            pointGraphics.PointRenderStyle = PointRenderStyleEnum.kDotPointStyle;
-            pointGraphics.Size = 0.05;
-        }
+        //    // Add the point graphics
+        //    PointGraphics pointGraphics = graphicsNode.AddPointGraphics();
+        //    pointGraphics.CoordinateSet = coordSet;
+        //    pointGraphics.PointRenderStyle = PointRenderStyleEnum.kDotPointStyle;
+        //    pointGraphics.Size = 0.05;
+        //}
+    }
 }

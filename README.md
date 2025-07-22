@@ -53,7 +53,8 @@ Certain aspects of this code have not been optimized yet, for example there are 
 1. To install SBL, a UNIX OS is currently required. This makes installation on Windows difficult, but can be worked around either by setting up a remote connection to a UNIX compatible machine, or setting up a local VM that can run SBL. In either case, changes will need to be made to pmc.volume to be able to access whatever sbl installation you use. For the ssh solution, enter the details in the volume method of python_support/pmc.py:
    ![alt text](Examples/readme_screenshots/image.png)
 
-### Example usage
+
+### Usage
 
 Once installed, we need simply need to run DTest.exe. 
 
@@ -69,6 +70,34 @@ Volume (in mm3) = 128819.51,
 Surface area (in mm2) = 17668.90,
 
 Center of mass: (in mm) (-2.27, -6.88, 29.96)
+
+
+## Bunny Walkthrough with Visualization
+
+In this section, we walk through how one can use DTest to test for interoperability of the Stanford bunny in Solidworks and Inventor. This file is originally a mesh, so we imported a version where it is treated as a smooth solid, and saved it to data/bunny.ipt. We then transferred the model to SolidWorks as data/bunny.SLDPRT. To measure the success of the transfer, we utilize DTest to construct the point clouds, and run the following command: ./DTest 4 5 C:/Users/danis/Coding/DTestfull/data/bunny.SLDPRT C:/Users/danis/Coding/DTestfull/data/bunny.ipt bunny_test 7.2 10. The 4, 5 define the systems to be used, followed by the two filenames, the name of the test, the algorithm tolerance for the PMC queries, and a parameter defining what counts as interoperating. It will save the point files as temp_SW_spheres.txt and temp_Inv_spheres.txt, with the points separated by ~ and pmc result by $, with -1 for out, 0 for on, 1 for in. If you have a nice SBL connection set up, it will output the results to the bunny_test file. The following was output for the experiment on the above files:
+
+```
+Running test bunny_test on model 1 C:/Users/danis/Coding/DTestfull/data/bunny.SLDPRT and model 2 C:/Users/danis/Coding/DTestfull/data/bunny.SLDPRT with tolerance 7.200000:
+
+Volume:
+Systems SolidWorks and Inventor have compatible volumes with a difference of -254.249421
+Volume of first proxy model: 128914.2653112, volume of second proxy model: 129168.5147322
+
+Surface Area:
+Systems SolidWorks and Inventor have incompatible areas with a difference of -141.643948
+Surface area of first proxy model: 18821.18059348, Surface area of second proxy model: 18962.82454171
+
+Hausdorff Distance:
+Systems SolidWorks and Inventor have a compatible Hausdorff Distance of 0.05635170
+```
+
+The computed point clouds can then even be visualized in Solidworks and Inventor. In Solidworks, we have included a display_points_macro, which, once the appropriate point cloud filename is defined within the code, displays the points as a sketch within the given solidworks file. For the bunny, this would create a point cloud like the one below:
+
+![alt text](Examples/readme_screenshots/sw_bunny.png)
+
+In inventor this code is included as a C\# application. The file DisplayCloud.cs includes code to, once a filename is set, add the points to the model in Autodesk Inventor. The user can specify which points they want to add, as well as whether they want to add small spheres or sketch points. Below is an example of what the output might look like for the Stanford Bunny, with only the ON points showing:
+
+![alt text](Examples/readme_screenshots/inv_bunny.png)
 
 ## References
 

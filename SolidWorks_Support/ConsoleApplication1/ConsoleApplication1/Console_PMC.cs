@@ -28,7 +28,7 @@ namespace SW_PMC_Grid
         {
             int density = int.Parse(args[1]);
             string filename = args[0];
-            double pmc_param = double.Parse(args[2]);
+            double pmc_param = 7.2;//double.Parse(args[2]);
             //Console.WriteLine($"Running SolidWorks PMC with parameters pmc_param: {pmc_param}, density: {density}");
             double sys_eps = 1e-5;
 
