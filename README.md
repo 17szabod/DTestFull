@@ -73,32 +73,33 @@ The Bunny model was originally a mesh. We imported a version where it is treated
 
 ./DTest 4 5 C:/Users/danis/Coding/DTestfull/data/bunny.SLDPRT C:/Users/danis/Coding/DTestfull/data/bunny.ipt bunny_test 7.2 10 
 
-where the numbers 4 and 5 define the systems to be used, and are followed by the two filenames, the name of the test, the algorithm tolerance for the PMC queries, and the proxy parameter. 
+where the numbers 4 and 5 define the systems to be used, and are followed by the two filenames, the name of the test, the algorithm tolerance for the PMC queries, and the tolerance used to determine whether two models are interoperable. 
 
 The execution of this command saves the point files as temp_SW_spheres.txt and temp_Inv_spheres.txt, with the points separated by ~ and pmc result by $, with -1 for out, 0 for on, 1 for in. If you have SBL connection set up, it outputs the results to the bunny_test file. The following was output for the experiment on the above files:
 
 ```
-Running test bunny_test on model 1 C:/Users/danis/Coding/DTestfull/data/bunny.SLDPRT and model 2 C:/Users/danis/Coding/DTestfull/data/bunny.SLDPRT with tolerance 7.200000:
+Running test bunny_test on model 1 C:/Users/danis/Coding/DTestfull/data/bunny.SLDPRT and model 2 C:/Users/danis/Coding/DTestfull/data/bunny.ipt with tolerance 10.00000:
 
 Volume:
-Systems SolidWorks and Inventor have compatible volumes with a difference of -254.249421
-Volume of first proxy model: 128914.2653112, volume of second proxy model: 129168.5147322
+Systems SolidWorks and Inventor have compatible volumes with a difference of 130.008214
+Volume of first proxy model: 56615.4534852948709, volume of second proxy model: 56485.4452713741994
 
 Surface Area:
-Systems SolidWorks and Inventor have incompatible areas with a difference of -141.643948
-Surface area of first proxy model: 18821.18059348, Surface area of second proxy model: 18962.82454171
+Systems SolidWorks and Inventor have incompatible areas with a difference of 317.538882
+Surface area of first proxy model: 11018.5818154265926, Surface area of second proxy model: 11336.1206975159294
 
 Hausdorff Distance:
-Systems SolidWorks and Inventor have a compatible Hausdorff Distance of 0.05635170
+Systems SolidWorks and Inventor have a compatible Hausdorff Distance of 8.09170285417822
 ```
 
 The computed point clouds can then even be visualized in Solidworks and Inventor. In Solidworks, we have included a display_points_macro, which, once the appropriate point cloud filename is defined within the code, displays the points as a sketch within the given solidworks file. For the bunny, this would create a point cloud like the one below:
 
-![alt text](Examples/readme_screenshots/sw_bunny.png)
+<img src="Examples/readme_screenshots/sw_bunny.png" alt="" width="400" height="300"/>
+
 
 In inventor this code is included as a C\# application. The file DisplayCloud.cs includes code to, once a filename is set, add the points to the model in Autodesk Inventor. The user can specify which points they want to add, as well as whether they want to add small spheres or sketch points. Below is an example of what the output might look like for the Stanford Bunny, with only the ON points showing:
 
-![alt text](Examples/readme_screenshots/inv_bunny.png)
+<img src="Examples/readme_screenshots/inv_bunny.png" alt="" width="400" height="350"/>
 
 ## References
 
