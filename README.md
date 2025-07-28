@@ -81,11 +81,11 @@ The execution of this command saves the point files as temp_SW_spheres.txt and t
 Running test bunny_test on model 1 C:/Users/danis/Coding/DTestfull/data/bunny.SLDPRT and model 2 C:/Users/danis/Coding/DTestfull/data/bunny.ipt with tolerance 10.00000:
 
 Volume:
-Systems SolidWorks and Inventor have compatible volumes with a difference of 130.008214
+Systems SolidWorks and Inventor have compatible volumes with a difference of 130.008214 and a spatially-scaled accuracy of 5.059 mm.
 Volume of first proxy model: 56615.4534852948709, volume of second proxy model: 56485.4452713741994
 
 Surface Area:
-Systems SolidWorks and Inventor have incompatible areas with a difference of 317.538882
+Systems SolidWorks and Inventor have incompatible areas with a difference of 317.538882 and a spatially-scaled accuracy of 17.81 mm.
 Surface area of first proxy model: 11018.5818154265926, Surface area of second proxy model: 11336.1206975159294
 
 Hausdorff Distance:
